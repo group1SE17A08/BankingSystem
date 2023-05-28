@@ -107,7 +107,7 @@ public class SignUpServlet extends HttpServlet {
 			response.sendRedirect("sign-up");
 		} else if (cusDao.isPhoneNumberDuplicated(phoneNumber)) {
 			session.setAttribute("phoneNumberDuplicated", "This phone number has been used for another account!");
-			session.removeAttribute("phoneNumberDuplicated");
+			session.removeAttribute("failPasswordCfm");
 			session.removeAttribute("failOtpCfm");
 			session.removeAttribute("accNumExisted");
 			session.removeAttribute("usernameDuplicated");
