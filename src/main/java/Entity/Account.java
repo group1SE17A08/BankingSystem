@@ -1,19 +1,20 @@
 package Entity;
 
 public class Account {
-    private String accountNumber;
-    private String accountOTP;
-    private int accountBalance;
-    private boolean accountVIPStatus;
-    private int accountTotalSavings;
-    private String accountSavingsId;
-    private boolean isAccountLocked;
-    // Constructors, getters, and setters
-    public Account() {
-    	
-    }
-    
-    public boolean isAccountLocked() {
+	private String accountNumber;
+	private String accountOTP;
+	private double accountBalance;
+	private boolean accountVIPStatus;
+	private double accountTotalSavings;
+	private String accountSavingsId;
+	private boolean isAccountLocked;
+
+	// Constructors, getters, and setters
+	public Account() {
+
+	}
+
+	public boolean isAccountLocked() {
 		return isAccountLocked;
 	}
 
@@ -22,11 +23,11 @@ public class Account {
 	}
 
 	public String getAccountNumber() {
-        return accountNumber;
-    }
+		return accountNumber;
+	}
 
-    public Account(String accountNumber, String accountOTP, int accountBalance, boolean accountVIPStatus,
-			int accountTotalSavings, String accountSavingsId, boolean isAccountLocked) {
+	public Account(String accountNumber, String accountOTP, double accountBalance, boolean accountVIPStatus,
+			double accountTotalSavings, String accountSavingsId, boolean isAccountLocked) {
 		super();
 		this.accountNumber = accountNumber;
 		this.accountOTP = accountOTP;
@@ -38,53 +39,61 @@ public class Account {
 	}
 
 	public void setAccountNumber(String accountNumber) {
-        this.accountNumber = accountNumber;
-    }
+		this.accountNumber = accountNumber;
+	}
 
-    public String getAccountOTP() {
-        return accountOTP;
-    }
+	public String getAccountOTP() {
+		return accountOTP;
+	}
 
-    public void setAccountOTP(String accountOTP) {
-        this.accountOTP = accountOTP;
-    }
+	public void setAccountOTP(String accountOTP) {
+		this.accountOTP = accountOTP;
+	}
 
-    public int getAccountBalance() {
-        return accountBalance;
-    }
+	public double getAccountBalance() {
+		return accountBalance;
+	}
 
-    public void setAccountBalance(int accountBalance) {
-        this.accountBalance = accountBalance;
-    }
+	public void setAccountBalance(double accountBalance) {
+		this.accountBalance = accountBalance;
+	}
 
-    public boolean isAccountVIPStatus() {
-        return accountVIPStatus;
-    }
+	public boolean isAccountVIPStatus() {
+		return accountVIPStatus;
+	}
 
-    public void setAccountVIPStatus(boolean accountVIPStatus) {
-        this.accountVIPStatus = accountVIPStatus;
-    }
+	public void setAccountVIPStatus(boolean accountVIPStatus) {
+		this.accountVIPStatus = accountVIPStatus;
+	}
 
-    public int getAccountTotalSavings() {
-        return accountTotalSavings;
-    }
+	public double getAccountTotalSavings() {
+		return accountTotalSavings;
+	}
 
-    public void setAccountTotalSavings(int accountTotalSavings) {
-        this.accountTotalSavings = accountTotalSavings;
-    }
+	public void setAccountTotalSavings(int accountTotalSavings) {
+		this.accountTotalSavings = accountTotalSavings;
+	}
 
-    public String getAccountSavingsId() {
-        return accountSavingsId;
-    }
+	public String getAccountSavingsId() {
+		return accountSavingsId;
+	}
 
-    public void setAccountSavingsId(String accountSavingsId) {
-        this.accountSavingsId = accountSavingsId;
-    }
+	public void setAccountSavingsId(String accountSavingsId) {
+		this.accountSavingsId = accountSavingsId;
+	}
 
 	@Override
 	public String toString() {
 		return "Account [accountNumber=" + accountNumber + ", accountOTP=" + accountOTP + ", accountBalance="
 				+ accountBalance + ", accountVIPStatus=" + accountVIPStatus + ", accountTotalSavings="
 				+ accountTotalSavings + ", accountSavingsId=" + accountSavingsId + "]";
+	}
+
+	public String formatAccountNumber() {
+		String accNum = this.getAccountNumber();
+		String formattedString = accNum.substring(0, 4) + " " + "****" + " " + "****"
+				+ " " + accNum.substring(12, 16);
+
+		return formattedString;
 	}
 }

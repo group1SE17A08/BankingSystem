@@ -59,6 +59,7 @@ public class SignInServlet extends HttpServlet {
 				request.getServletContext().getRequestDispatcher("/sign-in.jsp").forward(request, response);
 			} else {
 				session.setAttribute("user", customer);
+				System.out.println("cus homepage is: " + session.getAttribute("user"));
 				cusDao.updateLoginAttempts(username, 0);
 				response.sendRedirect("homepage");
 			}

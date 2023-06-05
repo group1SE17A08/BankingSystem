@@ -11,15 +11,47 @@
 			</button>
 			<div class="collapse navbar-collapse" id="navbarSupportedContent">
 				<ul class="navbar-nav mr-auto mb-2 mb-lg-0">
-					<li class="nav-item"><a class="nav-link" href="#about">My
-							profile</a></li>
-					<li class="nav-item"><a class="nav-link" href="#discover">Transaction
-							Activity</a></li>
-					<li class="nav-item"><a class="nav-link" href="#service">Settings
-							& Privacy</a></li>
-					<li class="nav-item"><a class="nav-link"
-						href="change-password.jsp">Change password</a></li>
+					<li class="nav-item"><a class="nav-link" href="/BankingSystem/transfer-money">New
+							Transaction</a></li>
 				</ul>
+				<div class="dropdown" style="margin: 0 5px;">
+					<button class="btn btn-secondary dropdown-toggle" type="button"
+						id="dropdownMenuButton" data-bs-toggle="dropdown"
+						aria-expanded="false">My Profile</button>
+					<ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+						<li><a class="dropdown-item" href="/BankingSystem/my-profile">View my profile</a></li>
+						<li><a class="dropdown-item" href="#">View
+								my trasaction history</a></li>
+					</ul>
+				</div>
+
+				<div class="dropdown" style="margin: 0 5px;">
+					<button class="btn btn-secondary dropdown-toggle" type="button"
+						id="dropdownMenuButton" data-bs-toggle="dropdown"
+						aria-expanded="false">Make a Request</button>
+					<ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+						<li><a class="dropdown-item" href="#">Lock my account</a></li>
+						<li><a class="dropdown-item" href="change-password.jsp">Unlock
+								my account</a></li>
+						<li><a class="dropdown-item" href="change-password.jsp">Request
+								a Savings</a></li>
+						<li><a class="dropdown-item" href="change-password.jsp">Request
+								a Personal Information Changing</a></li>
+					</ul>
+				</div>
+
+				<div class="dropdown" style="margin: 0 5px;">
+					<button class="btn btn-secondary dropdown-toggle" type="button"
+						id="dropdownMenuButton" data-bs-toggle="dropdown"
+						aria-expanded="false">Settings & Privacy</button>
+					<ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+						<li><a class="dropdown-item" href="#">Change Smart OTP</a></li>
+						<li><a class="dropdown-item" href="/BankingSystem/change-password">Change
+								Password</a></li>
+					</ul>
+				</div>
+
+
 
 				<div class="collapse navbar-collapse justify-content-end"
 					id="navbarNav">

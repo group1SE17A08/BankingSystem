@@ -2,17 +2,16 @@ package DAO;
 
 import java.sql.Connection;
 import java.sql.Date;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.Random;
 
 import DatabaseConnection.DatabaseConnection;
 import Entity.Account;
 import Entity.Customer;
+import Entity.Transaction;
 
 public class CustomerDAO_Impl {
 	private Connection connection = DatabaseConnection.getConnection();
@@ -42,7 +41,7 @@ public class CustomerDAO_Impl {
 				int customerLoginAttempts = resultSet.getInt("customer_loginAttempts");
 
 				Customer customer = new Customer(customerId, customerName, customerDob, customerAddress,
-						customerPhoneNumber, customerEmail, customerBankAccount, customerUsername, customerPassword,
+						customerPhoneNumber, customerEmail, customerUsername, customerPassword, customerBankAccount,
 						customerLoginAttempts);
 
 				return customer;
@@ -480,5 +479,108 @@ public class CustomerDAO_Impl {
 			return false;
 		}
 	}
+	
+	public void performTransaction(Transaction transaction) throws SQLException {
+        String transactionId = transaction.getTransactionId();
+        String fromAccount = transaction.getFromAccount();
+        String toAccount = transaction.getToAccount();
+        double amount = transaction.getAmount();
 
+        String subtractSql = "UPDATE Account SET account_balance = account_balance - ? WHERE account_number = ?";
+        String addSql = "UPDATE Account SET account_balance = account_balance + ? WHERE account_number = ?";
+
+        connection.setAutoCommit(false);
+
+        try {
+            PreparedStatement subtractStmt = connection.prepareStatement(subtractSql);
+            subtractStmt.setDouble(1, amount);
+            subtractStmt.setString(2, fromAccount);
+            subtractStmt.executeUpdate();
+
+            PreparedStatement addStmt = connection.prepareStatement(addSql);
+            addStmt.setDouble(1, amount);
+            addStmt.setString(2, toAccount);
+            addStmt.executeUpdate();
+
+            connection.commit();
+        } catch (SQLException e) {
+            try {
+                connection.rollback();
+            } catch (SQLException rollbackException) {
+                rollbackException.printStackTrace();
+            }
+            e.printStackTrace();
+        } finally {
+            try {
+                connection.setAutoCommit(true);
+            } catch (SQLException autoCommitException) {
+                autoCommitException.printStackTrace();
+            }
+        }
+    }
+	
+	public Account getCurrentUserAccount(Customer customer) {
+        Account account = null;
+
+        try {
+            // Prepare the SQL statement to retrieve the account
+            String sql = "SELECT * FROM Account WHERE account_number = ?";
+
+            // Create a PreparedStatement with the SQL statement
+            PreparedStatement statement = connection.prepareStatement(sql);
+
+            // Set the parameter values
+            statement.setString(1, customer.getCustomerBankAccount());
+
+            // Execute the query
+            ResultSet resultSet = statement.executeQuery();
+
+            // Check if the account exists
+            if (resultSet.next()) {
+                // Retrieve the account details from the result set
+                String accountNumber = resultSet.getString("account_number");
+                String accountOtp = resultSet.getString("account_otp");
+                double accountBalance = resultSet.getDouble("account_balance");
+                boolean accountVipStatus = resultSet.getBoolean("account_vipStatus");
+                double accountTotalSavings = resultSet.getDouble("account_totalSavings");
+                String accountSavingsId = resultSet.getString("account_savingsId");
+                boolean accountIsLocked = resultSet.getBoolean("account_isLocked");
+
+                // Create an Account object with the retrieved details
+                account = new Account(accountNumber, accountOtp, accountBalance, accountVipStatus, accountTotalSavings,
+                        accountSavingsId, accountIsLocked);
+            }
+
+        } catch (SQLException e) {
+            // Handle any errors that occur during the database access
+            e.printStackTrace();
+        }
+
+        return account;
+    }
+	
+
+    public void logTransaction(Transaction transaction) {
+        String query = "INSERT INTO Transaction_ (transaction_id, transaction_fromAccount, transaction_toAccount, " +
+                       "transaction_amount, transaction_date, transaction_status, transaction_content) " +
+                       "VALUES (?, ?, ?, ?, ?, ?, ?)";
+
+        try (PreparedStatement statement = connection.prepareStatement(query)) {
+            // Set values for the prepared statement
+            statement.setString(1, transaction.getTransactionId());
+            statement.setString(2, transaction.getFromAccount());
+            statement.setString(3, transaction.getToAccount());
+            statement.setDouble(4, transaction.getAmount());
+            statement.setDate(5, transaction.getDate());
+            statement.setBoolean(6, transaction.getStatus());
+            statement.setString(7, transaction.getContent());
+
+            // Execute the query
+            statement.executeUpdate();
+
+            System.out.println("Transaction added successfully.");
+        } catch (SQLException e) {
+            System.out.println("Error adding transaction: " + e.getMessage());
+        }
+    }
 }

@@ -1,5 +1,4 @@
 
-<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Responsive Virtual Bank Website</title>
@@ -20,11 +19,12 @@
       src="https://kit.fontawesome.com/7433d3320f.js"
       crossorigin="anonymous"
     ></script>
-    
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <link rel="icon" type="image/png" href="../Login_v1/images/icons/favicon.ico" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css">
 
 <link rel="stylesheet" type="text/css"
 	href="../Login_v1/vendor/bootstrap/css/bootstrap.min.css">
@@ -106,4 +106,10 @@
             }(w, d, "zarazData", "script");
         })(window, document);
     </script>
-  </head>
+    
+    
+<script>
+  $(document).ready(function() {
+    $('.dropdown-toggle').dropdown();
+  });
+</script>
