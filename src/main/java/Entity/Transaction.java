@@ -12,29 +12,9 @@ public class Transaction {
 	private Date date;
 	private boolean status;
 	private String content;
-
+	private String transactionType;
 	// Default constructor
 	public Transaction() {
-	}
-
-	// Constructor with all attributes
-	public Transaction(String transactionId, String fromAccount, String toAccount, double amount, Date date, boolean status,
-			String content) {
-		this.transactionId = transactionId;
-		this.fromAccount = fromAccount;
-		this.toAccount = toAccount;
-		this.amount = amount;
-		this.date = date;
-		this.status = status;
-		this.content = content;
-	}
-
-	// Getter and Setter methods for all attributes
-	public String getTransactionId() {
-		return transactionId;
-	}
-
-	public void setTransactionId() {
 		StringBuilder sb = new StringBuilder();
 
         String characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
@@ -47,6 +27,36 @@ public class Transaction {
             sb.append(randomChar);
         }
         this.transactionId = sb.toString();
+	}
+
+	public String getTransactionType() {
+		return transactionType;
+	}
+
+	public void setTransactionType(String transactionType) {
+		this.transactionType = transactionType;
+	}
+
+	// Constructor with all attributes
+	public Transaction(String transactionId, String fromAccount, String toAccount, double amount, Date date, boolean status,
+			String content, String transactionType) {
+		this.transactionId = transactionId;
+		this.fromAccount = fromAccount;
+		this.toAccount = toAccount;
+		this.amount = amount;
+		this.date = date;
+		this.status = status;
+		this.content = content;
+		this.transactionType = transactionType;
+	}
+
+	// Getter and Setter methods for all attributes
+	public String getTransactionId() {
+		return transactionId;
+	}
+
+	public void setTransactionId(String transactionId) {
+		this.transactionId = transactionId;
 	}
 
 	public String getFromAccount() {

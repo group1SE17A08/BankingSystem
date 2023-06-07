@@ -6,10 +6,12 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Random;
 
 import DatabaseConnection.DatabaseConnection;
 import Entity.Account;
+import Entity.Bill;
 import Entity.Customer;
 import Entity.Transaction;
 
@@ -562,8 +564,8 @@ public class CustomerDAO_Impl {
 
     public void logTransaction(Transaction transaction) {
         String query = "INSERT INTO Transaction_ (transaction_id, transaction_fromAccount, transaction_toAccount, " +
-                       "transaction_amount, transaction_date, transaction_status, transaction_content) " +
-                       "VALUES (?, ?, ?, ?, ?, ?, ?)";
+                       "transaction_amount, transaction_date, transaction_status, transaction_content, transaction_type) " +
+                       "VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
 
         try (PreparedStatement statement = connection.prepareStatement(query)) {
             // Set values for the prepared statement
@@ -574,13 +576,231 @@ public class CustomerDAO_Impl {
             statement.setDate(5, transaction.getDate());
             statement.setBoolean(6, transaction.getStatus());
             statement.setString(7, transaction.getContent());
-
+            statement.setString(8, transaction.getTransactionType());
             // Execute the query
             statement.executeUpdate();
 
             System.out.println("Transaction added successfully.");
         } catch (SQLException e) {
             System.out.println("Error adding transaction: " + e.getMessage());
+        }
+    }
+    
+    public boolean isAccountNumberExists(String accountNumber) {
+        boolean exists = false;
+
+        try {
+            // Prepare the SQL query
+            String sql = "SELECT COUNT(*) FROM Account WHERE account_number = ?";
+            PreparedStatement statement = connection.prepareStatement(sql);
+
+            // Set the account number parameter
+            statement.setString(1, accountNumber);
+
+            // Execute the query
+            ResultSet resultSet = statement.executeQuery();
+
+            // Check the result
+            if (resultSet.next()) {
+                int count = resultSet.getInt(1);
+                if (count > 0) {
+                    exists = true;  // Account number exists
+                }
+            }
+
+            // Close the resources
+            resultSet.close();
+            statement.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+            // Handle any exceptions
+        }
+
+        return exists;
+    }
+    
+    public void addBill(Bill bill) {
+        String query = "INSERT INTO Bill (bill_id, bill_createdBy, bill_accountReceive, bill_accountPaid, " +
+                "bill_amount, bill_paidDate, bill_isPaid, bill_billContent, bill_dueDate) " +
+                "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+
+        try (PreparedStatement statement = connection.prepareStatement(query)) {
+            statement.setString(1, bill.getBillId());
+            statement.setString(2, bill.getBillCreatedBy());
+            statement.setString(3, bill.getBillAccountReceive());
+            statement.setString(4, bill.getBillAccountPaid());
+            statement.setDouble(5, bill.getBillAmount());
+//            statement.setDate(6, bill.getBillPaidDate());
+            statement.setDate(6, null);
+            statement.setBoolean(7, bill.isBillIsPaid());
+            statement.setString(8, bill.getBillContent());
+            statement.setDate(9, bill.getBillDueDate());
+
+            int rowsAffected = statement.executeUpdate();
+            if (rowsAffected > 0) {
+                System.out.println("Bill added successfully.");
+            } else {
+                System.out.println("Failed to add the bill.");
+            }
+        } catch (SQLException e) {
+            System.out.println("An error occurred while adding the bill.");
+            e.printStackTrace();
+        }
+    }
+    public ArrayList<Bill> getBillsByAccountReceive(String accountReceive) {
+        ArrayList<Bill> bills = new ArrayList<>();
+
+        try {
+            // Prepare the SQL statement
+            String query = "SELECT * FROM Bill WHERE bill_accountReceive = ? and bill_isPaid = 0";
+            PreparedStatement statement = connection.prepareStatement(query);
+            statement.setString(1, accountReceive);
+
+            // Execute the query
+            ResultSet resultSet = statement.executeQuery();
+
+            // Process the results
+            while (resultSet.next()) {
+                Bill bill = new Bill();
+                bill.setBillId(resultSet.getString("bill_id"));
+                bill.setBillCreatedBy(resultSet.getString("bill_createdBy"));
+                bill.setBillAccountReceive(resultSet.getString("bill_accountReceive"));
+                bill.setBillAccountPaid(resultSet.getString("bill_accountPaid"));
+                bill.setBillAmount(resultSet.getDouble("bill_amount"));
+                bill.setBillPaidDate(resultSet.getDate("bill_paidDate"));
+                bill.setBillIsPaid(resultSet.getBoolean("bill_isPaid"));
+                bill.setBillContent(resultSet.getString("bill_billContent"));
+                bill.setBillDueDate(resultSet.getDate("bill_dueDate"));
+
+                bills.add(bill);
+            }
+
+            // Close the resources
+            resultSet.close();
+            statement.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+            // Handle any potential exceptions
+        }
+
+        return bills;
+    }
+    
+    public ArrayList<Bill> getBillsByAccountPaid(String accountPaid) {
+        ArrayList<Bill> bills = new ArrayList<>();
+
+        try {
+            // Prepare the SQL statement
+            String query = "SELECT * FROM Bill WHERE bill_accountPaid = ? and bill_isPaid = 0";
+            PreparedStatement statement = connection.prepareStatement(query);
+            statement.setString(1, accountPaid);
+
+            // Execute the query
+            ResultSet resultSet = statement.executeQuery();
+
+            // Process the results
+            while (resultSet.next()) {
+                Bill bill = new Bill();
+                bill.setBillId(resultSet.getString("bill_id"));
+                bill.setBillCreatedBy(resultSet.getString("bill_createdBy"));
+                bill.setBillAccountReceive(resultSet.getString("bill_accountReceive"));
+                bill.setBillAccountPaid(resultSet.getString("bill_accountPaid"));
+                bill.setBillAmount(resultSet.getDouble("bill_amount"));
+                bill.setBillPaidDate(resultSet.getDate("bill_paidDate"));
+                bill.setBillIsPaid(resultSet.getBoolean("bill_isPaid"));
+                bill.setBillContent(resultSet.getString("bill_billContent"));
+                bill.setBillDueDate(resultSet.getDate("bill_dueDate"));
+
+                bills.add(bill);
+            }
+
+            // Close the resources
+            resultSet.close();
+            statement.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+            // Handle any potential exceptions
+        }
+
+        return bills;
+    }
+    
+    public Bill getBillById(String billId) {
+        Bill bill = null;
+        String query = "SELECT * FROM Bill WHERE bill_id = ?";
+        
+        try (PreparedStatement statement = connection.prepareStatement(query)) {
+            statement.setString(1, billId);
+            ResultSet resultSet = statement.executeQuery();
+            
+            if (resultSet.next()) {
+                bill = new Bill();
+                bill.setBillId(resultSet.getString("bill_id"));
+                bill.setBillCreatedBy(resultSet.getString("bill_createdBy"));
+                bill.setBillAccountReceive(resultSet.getString("bill_accountReceive"));
+                bill.setBillAccountPaid(resultSet.getString("bill_accountPaid"));
+                bill.setBillAmount(resultSet.getDouble("bill_amount"));
+                bill.setBillPaidDate(resultSet.getDate("bill_paidDate"));
+                bill.setBillIsPaid(resultSet.getBoolean("bill_isPaid"));
+                bill.setBillContent(resultSet.getString("bill_billContent"));
+                bill.setBillDueDate(resultSet.getDate("bill_dueDate"));
+            }
+            
+            resultSet.close();
+        } catch (SQLException e) {
+            // Handle any exceptions or log the error
+            e.printStackTrace();
+        }
+        
+        return bill;
+    }
+    public Customer getCustomerByBankAccount(String bankAccount) {
+        Customer customer = null;
+        String query = "SELECT * FROM Customer WHERE customer_bankAccount = ?";
+        
+        try (PreparedStatement statement = connection.prepareStatement(query)) {
+            statement.setString(1, bankAccount);
+            ResultSet resultSet = statement.executeQuery();
+            
+            if (resultSet.next()) {
+                customer = new Customer();
+                customer.setCustomerId(resultSet.getString("customer_id"));
+                customer.setCustomerName(resultSet.getString("customer_name"));
+                customer.setCustomerDob(resultSet.getDate("customer_dob").toLocalDate());
+                customer.setCustomerAddress(resultSet.getString("customer_address"));
+                customer.setCustomerPhoneNumber(resultSet.getString("customer_phoneNumber"));
+                customer.setCustomerEmail(resultSet.getString("customer_email"));
+                customer.setCustomerUsername(resultSet.getString("customer_username"));
+                customer.setCustomerPassword(resultSet.getString("customer_password"));
+                customer.setCustomerBankAccount(resultSet.getString("customer_bankAccount"));
+                customer.setLoginAttempts(resultSet.getInt("customer_loginAttempts"));
+            }
+            
+            resultSet.close();
+        } catch (SQLException e) {
+            // Handle any exceptions or log the error
+            e.printStackTrace();
+        }
+        
+        return customer;
+    }
+    public void markBillAsPaid(String billId) throws SQLException {
+        String sql = "UPDATE Bill SET bill_isPaid = 1 WHERE bill_id = ?";
+
+        try (PreparedStatement statement = connection.prepareStatement(sql)) {
+            statement.setString(1, billId);
+            statement.executeUpdate();
+        }
+    }
+    
+    
+    public void updateBillPaidDate(String billId, Date paidDate) throws SQLException {
+        String sql = "UPDATE Bill SET bill_paidDate = ? WHERE bill_id = ?";
+
+        try (PreparedStatement statement = connection.prepareStatement(sql)) {
+            statement.setDate(1, paidDate);
+            statement.setString(2, billId);
+            statement.executeUpdate();
         }
     }
 }

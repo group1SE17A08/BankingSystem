@@ -70,15 +70,19 @@ public class TransferMoneyServlet extends HttpServlet {
 			session.setAttribute("transactionErr", "Insufficient Funds");
 			response.sendRedirect("transfer-money");
 		}
+		else if(!cusDao.isAccountNumberExists(request.getParameter("accountReceive"))) {
+			session.setAttribute("transactionErr", "Cannot transfer money to Unknown User!");
+			response.sendRedirect("transfer-money");
+		}
 		else {
 			try {
-				t.setTransactionId();
 				t.setFromAccount(currentAcc.getAccountNumber());
 				t.setToAccount(request.getParameter("accountReceive"));
 				t.setAmount(Double.parseDouble(request.getParameter("moneyAmount")));
 				t.setDate(currentDate);
 				t.setStatus(true);
 				t.setContent(request.getParameter("transactionContent"));
+				t.setTransactionType("Transfer Money");
 				cusDao.performTransaction(t);
 				cusDao.logTransaction(t);
 			} catch (SQLException e) {

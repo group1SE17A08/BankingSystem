@@ -10,10 +10,18 @@
 				<span class="navbar-toggler-icon"></span>
 			</button>
 			<div class="collapse navbar-collapse" id="navbarSupportedContent">
-				<ul class="navbar-nav mr-auto mb-2 mb-lg-0">
-					<li class="nav-item"><a class="nav-link" href="/BankingSystem/transfer-money">New
-							Transaction</a></li>
-				</ul>
+				
+				<div class="dropdown" style="margin: 0 5px;">
+					<button class="btn btn-secondary dropdown-toggle" type="button"
+						id="dropdownMenuButton" data-bs-toggle="dropdown"
+						aria-expanded="false">Transaction</button>
+					<ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+						<li><a class="dropdown-item" href="/BankingSystem/transfer-money">Transfer Money</a></li>
+						<li><a class="dropdown-item" href="/BankingSystem/create-invoice">Create an Online Invoice</a></li>
+						<li><a class="dropdown-item" href="/BankingSystem/pay-invoice">Pay an Online Invoice</a></li>
+					</ul>
+				</div>
+				
 				<div class="dropdown" style="margin: 0 5px;">
 					<button class="btn btn-secondary dropdown-toggle" type="button"
 						id="dropdownMenuButton" data-bs-toggle="dropdown"
@@ -31,11 +39,9 @@
 						aria-expanded="false">Make a Request</button>
 					<ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
 						<li><a class="dropdown-item" href="#">Lock my account</a></li>
-						<li><a class="dropdown-item" href="change-password.jsp">Unlock
-								my account</a></li>
-						<li><a class="dropdown-item" href="change-password.jsp">Request
+						<li><a class="dropdown-item" href="#">Request
 								a Savings</a></li>
-						<li><a class="dropdown-item" href="change-password.jsp">Request
+						<li><a class="dropdown-item" href="#">Request
 								a Personal Information Changing</a></li>
 					</ul>
 				</div>

@@ -266,9 +266,9 @@ input.invalid {
 
 					<div class="tab">
 						<div class="wrap-input100 validate-input"
-							data-validate="A 12-digit bank account number is required">
-							<input pattern="^\d{12}$"
-								title="The account number must be 12-digit" class="input100"
+							data-validate="A 16-digit bank account number is required">
+							<input pattern="^\d{16}$"
+								title="The account number must be 16-digit" class="input100"
 								type="text" name="accountNumber"
 								placeholder="Enter the account number you want"> <span
 								class="focus-input100"></span> <span class="symbol-input100">
