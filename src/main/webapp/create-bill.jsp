@@ -112,25 +112,29 @@
 
 
 							<div class="col-8">
-								<table class="table border-bottom border-gray-200 mt-3">
+								<table class="table border-bottom border-gray-200 mt-3"
+									id="myTable">
 									<thead>
 										<tr>
 											<th scope="col"
 												class="fs-sm text-dark text-uppercase-bold-sm px-0">Content</th>
 											<th scope="col"
 												class="fs-sm text-dark text-uppercase-bold-sm text-end px-0">Amount</th>
+											<th scope="col"></th>
 										</tr>
 									</thead>
-									<tbody>
+									<tbody id="tbody">
 										<tr>
-											<td class="px-0"><input type="text" name="billContent"
+											<td class="px-0"><input type="text" name="billContent[]"
 												placeholder="Bill content"></td>
 											<td class="text-end px-0"><input type="number"
-												name="billAmount" placeholder="Amount of money"></td>
+												name="billAmount[]" placeholder="Amount of money"></td>
+											<td><a id="removeBtn" type="button"
+												onclick="removeRow(this)">Remove</a> <br></td>
 										</tr>
 									</tbody>
 								</table>
-								<br>
+								<a id="addBtn" onclick="addRow()" type="button">Add</a>
 								<div class="row">
 									<div class="col-6">
 										<h5 style="text-align: center">Signature</h5>
@@ -168,9 +172,8 @@
 
 			</div>
 
-			<div class="col-3" style="color: blue">
-				<table class="table border-bottom border-gray-200"
-					style="height: 45%">
+			<div class="col-3">
+				<table class="table border-bottom border-gray-200">
 					<thead>
 						<tr>
 							<th scope="col"
@@ -181,7 +184,8 @@
 					<tbody>
 						<c:forEach items="${sessionScope.listBillCreated }" var="bill">
 							<tr>
-								<td class="px-0">Bill ID: <a href="view-invoice?billId=${bill.billId }&isMyBill=true">${bill.billId }</a></td>
+								<td class="px-0">Bill ID: <a
+									href="view-invoice?billId=${bill.billId }&isMyBill=true">${bill.billId }</a></td>
 							</tr>
 						</c:forEach>
 					</tbody>
@@ -198,7 +202,8 @@
 					<tbody>
 						<c:forEach items="${sessionScope.listBillPaid }" var="bill">
 							<tr>
-								<td class="px-0">Bill ID: <a href="view-invoice?billId=${bill.billId }&isMyBill=false">${bill.billId }</a></td>
+								<td class="px-0">Bill ID: <a
+									href="view-invoice?billId=${bill.billId }&isMyBill=false">${bill.billId }</a></td>
 							</tr>
 						</c:forEach>
 					</tbody>
@@ -210,6 +215,40 @@
 	<div style="position: fixed; bottom: 0; width: 100%">
 		<%@include file="include/footer.jsp"%>
 	</div>
+
+	<script>
+    function addRow() {
+      var table = document.getElementById("myTable");
+      var row = table.insertRow();
+
+      var cell1 = row.insertCell();
+      cell1.classList.add("px-0");
+      var input1 = document.createElement("input");
+      input1.type = "text";
+      input1.name = "billContent[]";
+      input1.placeholder = "Bill content";
+      cell1.appendChild(input1);
+
+      var cell2 = row.insertCell();
+      cell2.classList.add("text-end");
+      cell2.classList.add("px-0");
+      var input2 = document.createElement("input");
+      input2.type = "number";
+      input2.name = "billAmount[]"
+      input2.placeholder = "Amount of money";
+      cell2.appendChild(input2);
+
+      var cell3 = row.insertCell();
+      var removeButton = document.createElement("a");
+      removeButton.innerHTML = "Remove";
+      removeButton.style.cursor = "pointer";
+      removeButton.onclick = function() {
+        table.deleteRow(row.rowIndex);
+      };
+      cell3.appendChild(removeButton);
+    }
+  </script>
+
 	<script>
     const accountNumberInput = document.getElementById('billTo');
     const receiver = document.getElementById('receiverName');
@@ -253,5 +292,15 @@
     }
   });
 </script>
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js">
+  </script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js">
+  </script>
+	<script
+		src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js">
+  </script>
+
 </body>
 </html>
