@@ -2,6 +2,7 @@ package Entity;
 
 
 import java.sql.Date;
+import java.util.HashMap;
 import java.util.Random;
 
 public class Transaction {
@@ -13,6 +14,15 @@ public class Transaction {
 	private boolean status;
 	private String content;
 	private String transactionType;
+	private HashMap<String, Double> billDetails;
+	public HashMap<String, Double> getBillDetails() {
+		return billDetails;
+	}
+
+	public void setBillDetails(HashMap<String, Double> billDetails) {
+		this.billDetails = billDetails;
+	}
+
 	// Default constructor
 	public Transaction() {
 		StringBuilder sb = new StringBuilder();

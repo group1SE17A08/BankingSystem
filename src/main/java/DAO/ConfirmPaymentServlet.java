@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.google.gson.Gson;
+
 import Entity.Bill;
 import Entity.Transaction;
 
@@ -29,22 +31,29 @@ public class ConfirmPaymentServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		String billId = request.getParameter("billId");
-		CustomerDAO_Impl cusDao = new CustomerDAO_Impl();	
+		CustomerDAO_Impl cusDao = new CustomerDAO_Impl();
 		Transaction t = new Transaction();
 		Bill b = cusDao.getBillById(billId);
 		long currentTimeMillis = System.currentTimeMillis();
 		java.util.Date date = new Date(currentTimeMillis);
 		Date currentDate = new Date(date.getTime());
-		
-		
+		Gson gson = new Gson();
+
 		t.setFromAccount(b.getBillAccountPaid());
 		t.setToAccount(b.getBillAccountReceive());
-		t.setAmount(b.getBillAmount());
+
 		t.setDate(currentDate);
 		t.setStatus(true);
-		t.setContent(b.getBillContent());
+
+		t.setBillDetails(b.getBillDetails());
 		t.setTransactionType("Invoice Payment");
+
+		double totalAmount = 0;
+		for (Double value : b.getBillDetails().values()) {
+			totalAmount += value;
+		}
 		
+		t.setAmount(totalAmount);
 		try {
 			cusDao.performTransaction(t);
 		} catch (SQLException e) {

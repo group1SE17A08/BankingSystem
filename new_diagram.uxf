@@ -1,50 +1,50 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <diagram program="umlet" version="15.1.0">
-  <zoom_level>3</zoom_level>
+  <zoom_level>6</zoom_level>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>87</x>
-      <y>63</y>
-      <w>501</w>
-      <h>192</h>
+      <x>468</x>
+      <y>156</y>
+      <w>258</w>
+      <h>348</h>
     </coordinates>
-    <panel_attributes>Entity::Customer
+    <panel_attributes>DAO::CustomerDAO_Impl
 --
--customerId: String
--customerName: String
--customerDob: LocalDate
--customerAddress: String
--customerPhoneNumber: String
--customerEmail: String
--customerUsername: String
--customerPassword: String
--customerBankAccount: String
--loginAttempts: int
+-connection = DatabaseConnection.getConnection(): Connection
 --
-+Customer(): ctor
-+Customer(String customerId, String customerName, LocalDate customerDob, String customerAddress, String customerPhoneNumber, String customerEmail, String customerUsername, String customerPassword, String customerBankAccount, int loginAttempts): ctor
-+getLoginAttempts(): int
-+setLoginAttempts(int loginAttempts): void
-+getCustomerId(): String
-+setCustomerId(String customerId): void
-+getCustomerName(): String
-+setCustomerName(String customerName): void
-+getCustomerDob(): LocalDate
-+setCustomerDob(LocalDate customerDob): void
-+getCustomerAddress(): String
-+setCustomerAddress(String customerAddress): void
-+getCustomerPhoneNumber(): String
-+setCustomerPhoneNumber(String customerPhoneNumber): void
-+getCustomerEmail(): String
-+setCustomerEmail(String customerEmail): void
-+getCustomerUsername(): String
-+setCustomerUsername(String customerUsername): void
-+getCustomerPassword(): String
-+setCustomerPassword(String customerPassword): void
-+getCustomerBankAccount(): String
-+setCustomerBankAccount(String customerBankAccount): void
-+toString(): String
++verifyLogin(String username, String password): Customer
++changePassword(Customer customer, String newPassword): void
++idGenerator(): String
++generateUniqueId(): String
++isIdExists(String id): boolean
++signUp(Customer c): void
++accNumValidation(String accountNumber): boolean
++addAccount(Account account): boolean
++isUsernameDuplicated(String username): boolean
++isEmailDuplicated(String email): boolean
++isPhoneNumberDuplicated(String phoneNumber): boolean
++lockAccount(String username): void
++updateLoginAttempts(String username, int loginAttempts): void
++verifyCustomerLogin(String username, String password): boolean
++getLoginAttempts(String username): int
++getAccountLockStatus(String username): boolean
++isUsernameExists(String username): boolean
++getCustomerByEmail(String email): Customer
++updateCustomerPassword(Customer customer): boolean
++getCustomerPassword(Customer customer): String
++isEmailExist(String email): boolean
++performTransaction(Transaction transaction): void
++getCurrentUserAccount(Customer customer): Account
++logTransaction(Transaction transaction): void
++isAccountNumberExists(String accountNumber): boolean
++addBill(Bill bill): void
++getBillsByAccountReceive(String accountReceive): ArrayList&lt;Bill&gt;
++getBillsByAccountPaid(String accountPaid): ArrayList&lt;Bill&gt;
++getBillById(String billId): Bill
++getCustomerByBankAccount(String bankAccount): Customer
++markBillAsPaid(String billId): void
++updateBillPaidDate(String billId, Date paidDate): void
 --
 </panel_attributes>
     <additional_attributes/>
@@ -52,10 +52,10 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>591</x>
-      <y>63</y>
-      <w>354</w>
-      <h>174</h>
+      <x>876</x>
+      <y>30</y>
+      <w>252</w>
+      <h>318</h>
     </coordinates>
     <panel_attributes>Entity::Bill
 --
@@ -72,7 +72,7 @@
 +Bill(): ctor
 +Bill(String billId, String billCreatedBy, String billAccountReceive, String billAccountPaid, double billAmount, Date billPaidDate, boolean billIsPaid, String billContent, Date billDueDate): ctor
 +getBillId(): String
-+setBillId(): void
++setBillId(String billId): void
 +getBillCreatedBy(): String
 +setBillCreatedBy(String billCreatedBy): void
 +getBillAccountReceive(): String
@@ -97,50 +97,10 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>87</x>
-      <y>258</y>
-      <w>366</w>
-      <h>150</h>
-    </coordinates>
-    <panel_attributes>Entity::Account
---
--accountNumber: String
--accountOTP: String
--accountBalance: double
--accountVIPStatus: boolean
--accountTotalSavings: double
--accountSavingsId: String
--isAccountLocked: boolean
---
-+Account(): ctor
-+Account(String accountNumber, String accountOTP, double accountBalance, boolean accountVIPStatus, double accountTotalSavings, String accountSavingsId, boolean isAccountLocked): ctor
-+isAccountLocked(): boolean
-+setAccountLocked(boolean isAccountLocked): void
-+getAccountNumber(): String
-+setAccountNumber(String accountNumber): void
-+getAccountOTP(): String
-+setAccountOTP(String accountOTP): void
-+getAccountBalance(): double
-+setAccountBalance(double accountBalance): void
-+isAccountVIPStatus(): boolean
-+setAccountVIPStatus(boolean accountVIPStatus): void
-+getAccountTotalSavings(): double
-+setAccountTotalSavings(int accountTotalSavings): void
-+getAccountSavingsId(): String
-+setAccountSavingsId(String accountSavingsId): void
-+toString(): String
-+formatAccountNumber(): String
---
-</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>UMLClass</id>
-    <coordinates>
-      <x>456</x>
-      <y>258</y>
-      <w>258</w>
-      <h>144</h>
+      <x>888</x>
+      <y>366</y>
+      <w>228</w>
+      <h>294</h>
     </coordinates>
     <panel_attributes>Entity::Transaction
 --
@@ -151,11 +111,14 @@
 -date: Date
 -status: boolean
 -content: String
+-transactionType: String
 --
 +Transaction(): ctor
-+Transaction(String transactionId, String fromAccount, String toAccount, double amount, Date date, boolean status, String content): ctor
++Transaction(String transactionId, String fromAccount, String toAccount, double amount, Date date, boolean status, String content, String transactionType): ctor
++getTransactionType(): String
++setTransactionType(String transactionType): void
 +getTransactionId(): String
-+setTransactionId(): void
++setTransactionId(String transactionId): void
 +getFromAccount(): String
 +setFromAccount(String fromAccount): void
 +getToAccount(): String
@@ -176,30 +139,255 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>87</x>
-      <y>411</y>
-      <w>252</w>
-      <h>96</h>
+      <x>54</x>
+      <y>48</y>
+      <w>324</w>
+      <h>90</h>
     </coordinates>
-    <panel_attributes>Entity::AdminUser
+    <panel_attributes>Controller::HomepageServlet
 --
--adminUser_userId: String
--adminUser_username: String
--adminUser_password: String
--adminUser_userRole: String
+-serialVersionUID = 1L: long
 --
-+AdminUser(): ctor
-+AdminUser(String adminUser_userId, String adminUser_username, String adminUser_password, String adminUser_userRole): ctor
-+getAdminUser_userId(): String
-+getAdminUser_username(): String
-+getAdminUser_password(): String
-+getAdminUser_userRole(): String
-+setAdminUser_userId(String adminUser_userId): void
-+setAdminUser_username(String adminUser_username): void
-+setAdminUser_password(String adminUser_password): void
-+setAdminUser_userRole(String adminUser_userRole): void
-+toString(): String
++HomepageServlet(): ctor
+#doGet(HttpServletRequest request, HttpServletResponse response): void
+#doPost(HttpServletRequest request, HttpServletResponse response): void
+#doPost_signIn(HttpServletRequest request, HttpServletResponse response): void
+#doPost_logOut(HttpServletRequest request, HttpServletResponse response): void
 --
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>48</x>
+      <y>276</y>
+      <w>366</w>
+      <h>78</h>
+    </coordinates>
+    <panel_attributes>Controller::InvoicePaymentServlet
+--
+-serialVersionUID = 1L: long
+--
++InvoicePaymentServlet(): ctor
+#doGet(HttpServletRequest request, HttpServletResponse response): void
+#doPost(HttpServletRequest request, HttpServletResponse response): void
+#doPost_proceedPayment(HttpServletRequest request, HttpServletResponse response): void
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>54</x>
+      <y>168</y>
+      <w>324</w>
+      <h>78</h>
+    </coordinates>
+    <panel_attributes>Controller::SignInServlet
+--
+-serialVersionUID = 1L: long
+--
++SignInServlet(): ctor
+#doGet(HttpServletRequest request, HttpServletResponse response): void
+#doPost(HttpServletRequest request, HttpServletResponse response): void
+#doPost_signIn(HttpServletRequest request, HttpServletResponse response): void
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>54</x>
+      <y>414</y>
+      <w>330</w>
+      <h>78</h>
+    </coordinates>
+    <panel_attributes>Controller::ViewInvoiceServlet
+--
+-serialVersionUID = 1L: long
+--
++ViewInvoiceServlet(): ctor
+#doGet(HttpServletRequest request, HttpServletResponse response): void
+#doPost(HttpServletRequest request, HttpServletResponse response): void
+#doPost_payNow(HttpServletRequest request, HttpServletResponse response): void
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>240</x>
+      <y>564</y>
+      <w>294</w>
+      <h>72</h>
+    </coordinates>
+    <panel_attributes>DAO::ConfirmPaymentServlet
+--
+-serialVersionUID = 1L: long
+--
++ConfirmPaymentServlet(): ctor
+#doGet(HttpServletRequest request, HttpServletResponse response): void
+#doPost(HttpServletRequest request, HttpServletResponse response): void
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>210</x>
+      <y>132</y>
+      <w>18</w>
+      <h>48</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;60.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>210</x>
+      <y>240</y>
+      <w>18</w>
+      <h>48</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;60.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>210</x>
+      <y>348</y>
+      <w>18</w>
+      <h>78</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;110.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Text</id>
+    <coordinates>
+      <x>222</x>
+      <y>360</y>
+      <w>204</w>
+      <h>42</h>
+    </coordinates>
+    <panel_attributes>User can either choose to pay their own invoice or pay for others' invoice.  Redirect to View Invoice
+style=wordwrap
+fontsize=20
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>408</x>
+      <y>318</y>
+      <w>72</w>
+      <h>18</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>100.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>522</x>
+      <y>48</y>
+      <w>366</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>590.0;10.0;10.0;10.0;10.0;180.0</additional_attributes>
+  </element>
+  <element>
+    <id>Text</id>
+    <coordinates>
+      <x>594</x>
+      <y>24</y>
+      <w>204</w>
+      <h>42</h>
+    </coordinates>
+    <panel_attributes>Retrieve Bill object for View in InvoicePaymentServlet
+style=wordwrap
+fontsize=20
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>210</x>
+      <y>486</y>
+      <w>42</w>
+      <h>132</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>50.0;200.0;10.0;200.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>528</x>
+      <y>498</y>
+      <w>114</w>
+      <h>114</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>170.0;10.0;170.0;170.0;10.0;170.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>624</x>
+      <y>498</y>
+      <w>276</w>
+      <h>114</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;170.0;440.0;170.0</additional_attributes>
+  </element>
+  <element>
+    <id>Text</id>
+    <coordinates>
+      <x>570</x>
+      <y>606</y>
+      <w>222</w>
+      <h>72</h>
+    </coordinates>
+    <panel_attributes>When confirming paying an invoice, the transaction object is performed, then logged in Transaction table in the database
+style=wordwrap
+fontsize=20
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>12</x>
+      <y>312</y>
+      <w>564</w>
+      <h>246</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>60.0;10.0;10.0;10.0;20.0;390.0;920.0;390.0;920.0;320.0</additional_attributes>
+  </element>
+  <element>
+    <id>Text</id>
+    <coordinates>
+      <x>240</x>
+      <y>510</y>
+      <w>204</w>
+      <h>42</h>
+    </coordinates>
+    <panel_attributes>Succesful Payment. Redirect to InvoicePaymentServlet
+style=wordwrap
+fontsize=20
 </panel_attributes>
     <additional_attributes/>
   </element>
