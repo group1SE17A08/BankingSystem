@@ -32,7 +32,7 @@ public class AdminLoginServlet extends HttpServlet {
 			doPost_login(request, response);
 		}
 	}
-	
+
 	protected void doPost_login(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		StaffDAO_Impl staffDao = new StaffDAO_Impl();
@@ -40,13 +40,17 @@ public class AdminLoginServlet extends HttpServlet {
 		String password = request.getParameter("password");
 		HttpSession session = request.getSession();
 		AdminUser admin = staffDao.getAdminUser(username, password);
-		
+
 		if (admin == null) {
 			session.setAttribute("failAdminLogin", "No user found!");
 			response.sendRedirect("admin-login");
 		} else {
 			session.setAttribute("adminUser", admin);
-			response.sendRedirect("admin-homepage");
+			if (admin.getAdminUser_userRole().equals("Staff")) {
+				response.sendRedirect("staff-dashboard");
+			} else {
+				response.sendRedirect("admin-homepage");
+			}
 		}
 	}
 }

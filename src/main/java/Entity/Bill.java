@@ -1,6 +1,10 @@
 package Entity;
 
 import java.sql.Date;
+<<<<<<< HEAD
+import java.sql.Timestamp;
+=======
+>>>>>>> 582fe9be6fbf99551477911ce8ee6e63ff6ae2cc
 import java.util.HashMap;
 import java.util.Random;
 
@@ -9,10 +13,17 @@ public class Bill {
 	private String billCreatedBy;
 	private String billAccountReceive;
 	private String billAccountPaid;
+<<<<<<< HEAD
+
+	private Timestamp billPaidDate;
+	private boolean billIsPaid;
+
+=======
 
 	private Date billPaidDate;
 	private boolean billIsPaid;
 
+>>>>>>> 582fe9be6fbf99551477911ce8ee6e63ff6ae2cc
 	private Date billDueDate;
 	
 	private HashMap<String, Double> billDetails;
@@ -42,7 +53,7 @@ public class Bill {
 
 	// Parameterized constructor
 	public Bill(String billId, String billCreatedBy, String billAccountReceive, String billAccountPaid,
-			double billAmount, Date billPaidDate, boolean billIsPaid, String billContent, Date billDueDate) {
+			double billAmount, Timestamp billPaidDate, boolean billIsPaid, String billContent, Date billDueDate) {
 		this.billId = billId;
 		this.billCreatedBy = billCreatedBy;
 		this.billAccountReceive = billAccountReceive;
@@ -91,12 +102,12 @@ public class Bill {
 
 
 
-	public Date getBillPaidDate() {
+	public Timestamp getBillPaidDate() {
 		return billPaidDate;
 	}
 
-	public void setBillPaidDate(Date billPaidDate) {
-		this.billPaidDate = billPaidDate;
+	public void setBillPaidDate(Timestamp billPaidTimestamp) {
+		this.billPaidDate = billPaidTimestamp;
 	}
 
 	public boolean isBillIsPaid() {
@@ -113,8 +124,8 @@ public class Bill {
 		return billDueDate;
 	}
 
-	public void setBillDueDate(Date billDueDate) {
-		this.billDueDate = billDueDate;
+	public void setBillDueDate(Date billDueTimestamp) {
+		this.billDueDate = billDueTimestamp;
 	}
 
 	public HashMap<String, Double> getBillDetails() {

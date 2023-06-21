@@ -1,5 +1,26 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <diagram program="umlet" version="15.1.0">
+<<<<<<< HEAD
+  <zoom_level>8</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>104</x>
+      <y>216</y>
+      <w>432</w>
+      <h>128</h>
+    </coordinates>
+    <panel_attributes>Controller::HomepageServlet
+--
+-serialVersionUID = 1L: long
+--
++HomepageServlet(): ctor
+#doGet(HttpServletRequest request, HttpServletResponse response): void
+#doPost(HttpServletRequest request, HttpServletResponse response): void
+#doPost_signIn(HttpServletRequest request, HttpServletResponse response): void
+#doPost_logOut(HttpServletRequest request, HttpServletResponse response): void
+#doPost_takeReq(HttpServletRequest request, HttpServletResponse response): void
+=======
   <zoom_level>6</zoom_level>
   <element>
     <id>UMLClass</id>
@@ -45,13 +66,23 @@
 +getCustomerByBankAccount(String bankAccount): Customer
 +markBillAsPaid(String billId): void
 +updateBillPaidDate(String billId, Date paidDate): void
+>>>>>>> 582fe9be6fbf99551477911ce8ee6e63ff6ae2cc
 --
 </panel_attributes>
     <additional_attributes/>
   </element>
   <element>
-    <id>UMLClass</id>
+    <id>Relation</id>
     <coordinates>
+<<<<<<< HEAD
+      <x>288</x>
+      <y>160</y>
+      <w>352</w>
+      <h>256</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>20.0;70.0;20.0;10.0;420.0;10.0;420.0;300.0;10.0;300.0;10.0;230.0</additional_attributes>
+=======
       <x>876</x>
       <y>30</y>
       <w>252</w>
@@ -93,10 +124,20 @@
 --
 </panel_attributes>
     <additional_attributes/>
+>>>>>>> 582fe9be6fbf99551477911ce8ee6e63ff6ae2cc
   </element>
   <element>
-    <id>UMLClass</id>
+    <id>Text</id>
     <coordinates>
+<<<<<<< HEAD
+      <x>344</x>
+      <y>400</y>
+      <w>248</w>
+      <h>64</h>
+    </coordinates>
+    <panel_attributes>Clear the session, set the state to not logged in and redirect the user to homepage. User has to log in again in order to use the Banking Application.
+style=wordwrap</panel_attributes>
+=======
       <x>888</x>
       <y>366</y>
       <w>228</w>
@@ -155,6 +196,7 @@
 #doPost_logOut(HttpServletRequest request, HttpServletResponse response): void
 --
 </panel_attributes>
+>>>>>>> 582fe9be6fbf99551477911ce8ee6e63ff6ae2cc
     <additional_attributes/>
   </element>
   <element>

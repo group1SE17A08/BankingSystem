@@ -2,6 +2,7 @@ package Controller;
 
 import java.io.IOException;
 import java.sql.Date;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -66,8 +67,8 @@ public class InvoiceCreateServlet extends HttpServlet {
 		
 		//Lay ngay` tao bill
 		long currentTimeMillis = System.currentTimeMillis();
-		java.util.Date date = new Date(currentTimeMillis);
-		Date currentDate = new Date(date.getTime());
+
+		Timestamp currentDate = new Timestamp(currentTimeMillis);
 		
 		//Lay ngay` due bill
 		Date dueDate = Date.valueOf(request.getParameter("dueDate"));

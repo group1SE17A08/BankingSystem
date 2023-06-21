@@ -1,12 +1,13 @@
 package Entity;
 
+import java.sql.Date;
 import java.time.LocalDate;
 
 public class Customer {
 
 	    private String customerId;
 	    private String customerName;
-	    private LocalDate customerDob;
+	    private Date customerDob;
 	    private String customerAddress;
 	    private String customerPhoneNumber;
 	    private String customerEmail;
@@ -14,7 +15,8 @@ public class Customer {
 	    private String customerPassword;
 	    private String customerBankAccount;
 	    private int loginAttempts;
-
+	    private boolean vipStatus;
+	    
 		public int getLoginAttempts() {
 			return loginAttempts;
 		}
@@ -27,7 +29,7 @@ public class Customer {
 	    	
 	    }
 	    
-	    public Customer(String customerId, String customerName, LocalDate customerDob, String customerAddress,
+	    public Customer(String customerId, String customerName, Date customerDob, String customerAddress,
 	                    String customerPhoneNumber, String customerEmail, String customerUsername,
 	                    String customerPassword, String customerBankAccount, int loginAttempts) {
 	        this.customerId = customerId;
@@ -60,11 +62,11 @@ public class Customer {
 	        this.customerName = customerName;
 	    }
 
-	    public LocalDate getCustomerDob() {
+	    public Date getCustomerDob() {
 	        return customerDob;
 	    }
 
-	    public void setCustomerDob(LocalDate customerDob) {
+	    public void setCustomerDob(Date customerDob) {
 	        this.customerDob = customerDob;
 	    }
 
@@ -123,6 +125,14 @@ public class Customer {
 					+ customerPhoneNumber + ", customerEmail=" + customerEmail + ", customerUsername="
 					+ customerUsername + ", customerPassword=" + customerPassword + ", customerBankAccount="
 					+ customerBankAccount + "]";
+		}
+
+		public boolean isVipStatus() {
+			return vipStatus;
+		}
+
+		public void setVipStatus(boolean vipStatus) {
+			this.vipStatus = vipStatus;
 		}
 	
 

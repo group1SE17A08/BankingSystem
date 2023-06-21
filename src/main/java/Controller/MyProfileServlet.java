@@ -1,8 +1,13 @@
 package Controller;
 
 import java.io.IOException;
+<<<<<<< HEAD
+import java.sql.SQLException;
+import java.sql.Timestamp;
+=======
 import java.sql.Date;
 import java.sql.SQLException;
+>>>>>>> 582fe9be6fbf99551477911ce8ee6e63ff6ae2cc
 import java.util.HashMap;
 import java.util.UUID;
 
@@ -50,8 +55,13 @@ public class MyProfileServlet extends HttpServlet {
 		Customer cus = (Customer) session.getAttribute("user");
 		
 		long currentTimeMillis = System.currentTimeMillis();
+<<<<<<< HEAD
+
+		Timestamp currentDate = new Timestamp(currentTimeMillis);
+=======
 		java.util.Date date = new Date(currentTimeMillis);
 		Date currentDate = new Date(date.getTime());
+>>>>>>> 582fe9be6fbf99551477911ce8ee6e63ff6ae2cc
 		
 		String uuid = UUID.randomUUID().toString().replaceAll("-", "");
 		System.out.println(uuid);
