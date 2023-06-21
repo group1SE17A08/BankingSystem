@@ -1,7 +1,10 @@
 package Entity;
 
 import java.sql.Date;
+<<<<<<< HEAD
 import java.sql.Timestamp;
+=======
+>>>>>>> 582fe9be6fbf99551477911ce8ee6e63ff6ae2cc
 import java.util.HashMap;
 import java.util.Random;
 
@@ -10,10 +13,17 @@ public class Bill {
 	private String billCreatedBy;
 	private String billAccountReceive;
 	private String billAccountPaid;
+<<<<<<< HEAD
 
 	private Timestamp billPaidDate;
 	private boolean billIsPaid;
 
+=======
+
+	private Date billPaidDate;
+	private boolean billIsPaid;
+
+>>>>>>> 582fe9be6fbf99551477911ce8ee6e63ff6ae2cc
 	private Date billDueDate;
 	
 	private HashMap<String, Double> billDetails;

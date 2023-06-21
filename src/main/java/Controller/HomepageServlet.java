@@ -1,9 +1,15 @@
 package Controller;
 
 import java.io.IOException;
+<<<<<<< HEAD
 import java.sql.Date;
 import java.sql.SQLException;
 import java.sql.Timestamp;
+=======
+import java.io.PrintWriter;
+import java.sql.Date;
+import java.sql.SQLException;
+>>>>>>> 582fe9be6fbf99551477911ce8ee6e63ff6ae2cc
 import java.util.HashMap;
 
 import javax.servlet.ServletException;
@@ -66,6 +72,7 @@ public class HomepageServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 		
 		long currentTimeMillis = System.currentTimeMillis();
+<<<<<<< HEAD
 
 		Timestamp currentDate = new Timestamp(currentTimeMillis);
 		HashMap<Double, Date> savings = null;
@@ -73,6 +80,13 @@ public class HomepageServlet extends HttpServlet {
 		Date date = null;
 		
 		
+=======
+		java.util.Date date1 = new Date(currentTimeMillis);
+		Date currentDate = new Date(date1.getTime());
+		HashMap<Double, Date> savings = null;
+		Customer cus = (Customer) session.getAttribute("user");
+		Date date = null;
+>>>>>>> 582fe9be6fbf99551477911ce8ee6e63ff6ae2cc
 		if (reqMaturityDate != null) {
 			date = Date.valueOf(reqMaturityDate);
 			System.out.println(date);

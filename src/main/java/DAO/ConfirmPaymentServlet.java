@@ -36,9 +36,14 @@ public class ConfirmPaymentServlet extends HttpServlet {
 		Bill b = cusDao.getBillById(billId);
 		
 		long currentTimeMillis = System.currentTimeMillis();
+<<<<<<< HEAD
 		
 		Timestamp currentDate = new Timestamp(currentTimeMillis);
 		
+=======
+		java.util.Date date = new Date(currentTimeMillis);
+		Date currentDate = new Date(date.getTime());
+>>>>>>> 582fe9be6fbf99551477911ce8ee6e63ff6ae2cc
 		Gson gson = new Gson();
 
 		t.setFromAccount(b.getBillAccountPaid());

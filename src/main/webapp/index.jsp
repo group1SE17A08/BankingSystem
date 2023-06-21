@@ -87,8 +87,13 @@
 									earliest date that you can withdraw the amount of money you put
 									on your savings, including interest.</small> <br> <br> <small>Please
 									note that: The interest rate is fixed in our bank.</small><br> <small>-
+<<<<<<< HEAD
 									7% APY for normal customer.</small><br> <small>- Up to 10%
 									APY for our VIP customer.</small>
+=======
+									7% API for normal customer.</small><br> <small>- Up to 10%
+									API for our VIP customer.</small>
+>>>>>>> 582fe9be6fbf99551477911ce8ee6e63ff6ae2cc
 							</div>
 						</div>
 						<div class="modal-footer">

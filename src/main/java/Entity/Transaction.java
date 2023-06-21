@@ -1,7 +1,11 @@
 package Entity;
 
 
+<<<<<<< HEAD
 import java.sql.Timestamp;
+=======
+import java.sql.Date;
+>>>>>>> 582fe9be6fbf99551477911ce8ee6e63ff6ae2cc
 import java.util.HashMap;
 import java.util.Random;
 

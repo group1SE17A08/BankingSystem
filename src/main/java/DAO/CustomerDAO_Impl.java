@@ -574,7 +574,11 @@ public class CustomerDAO_Impl {
 			statement.setString(2, transaction.getFromAccount());
 			statement.setString(3, transaction.getToAccount());
 			statement.setDouble(4, transaction.getAmount());
+<<<<<<< HEAD
 			statement.setTimestamp(5, transaction.getDate());
+=======
+			statement.setDate(5, transaction.getDate());
+>>>>>>> 582fe9be6fbf99551477911ce8ee6e63ff6ae2cc
 			statement.setBoolean(6, transaction.getStatus());
 			statement.setString(7, transaction.getContent());
 			statement.setString(8, transaction.getTransactionType());
@@ -666,7 +670,11 @@ public class CustomerDAO_Impl {
 				bill.setBillAccountReceive(resultSet.getString("bill_accountReceive"));
 				bill.setBillAccountPaid(resultSet.getString("bill_accountPaid"));
 
+<<<<<<< HEAD
 				bill.setBillPaidDate(resultSet.getTimestamp("bill_paidDate"));
+=======
+				bill.setBillPaidDate(resultSet.getDate("bill_paidDate"));
+>>>>>>> 582fe9be6fbf99551477911ce8ee6e63ff6ae2cc
 				bill.setBillIsPaid(resultSet.getBoolean("bill_isPaid"));
 
 				bill.setBillDueDate(resultSet.getDate("bill_dueDate"));
@@ -704,7 +712,11 @@ public class CustomerDAO_Impl {
 				bill.setBillAccountReceive(resultSet.getString("bill_accountReceive"));
 				bill.setBillAccountPaid(resultSet.getString("bill_accountPaid"));
 
+<<<<<<< HEAD
 				bill.setBillPaidDate(resultSet.getTimestamp("bill_paidDate"));
+=======
+				bill.setBillPaidDate(resultSet.getDate("bill_paidDate"));
+>>>>>>> 582fe9be6fbf99551477911ce8ee6e63ff6ae2cc
 				bill.setBillIsPaid(resultSet.getBoolean("bill_isPaid"));
 
 				bill.setBillDueDate(resultSet.getDate("bill_dueDate"));
@@ -736,7 +748,11 @@ public class CustomerDAO_Impl {
 				bill.setBillAccountReceive(resultSet.getString("bill_accountReceive"));
 				bill.setBillAccountPaid(resultSet.getString("bill_accountPaid"));
 
+<<<<<<< HEAD
 				bill.setBillPaidDate(resultSet.getTimestamp("bill_paidDate"));
+=======
+				bill.setBillPaidDate(resultSet.getDate("bill_paidDate"));
+>>>>>>> 582fe9be6fbf99551477911ce8ee6e63ff6ae2cc
 				bill.setBillIsPaid(resultSet.getBoolean("bill_isPaid"));
 
 				bill.setBillDueDate(resultSet.getDate("bill_dueDate"));
@@ -765,7 +781,11 @@ public class CustomerDAO_Impl {
 				customer = new Customer();
 				customer.setCustomerId(resultSet.getString("customer_id"));
 				customer.setCustomerName(resultSet.getString("customer_name"));
+<<<<<<< HEAD
 				customer.setCustomerDob(resultSet.getDate("customer_dob"));
+=======
+				customer.setCustomerDob(resultSet.getDate("customer_dob").toLocalDate());
+>>>>>>> 582fe9be6fbf99551477911ce8ee6e63ff6ae2cc
 				customer.setCustomerAddress(resultSet.getString("customer_address"));
 				customer.setCustomerPhoneNumber(resultSet.getString("customer_phoneNumber"));
 				customer.setCustomerEmail(resultSet.getString("customer_email"));
@@ -793,11 +813,19 @@ public class CustomerDAO_Impl {
 		}
 	}
 
+<<<<<<< HEAD
 	public void updateBillPaidDate(String billId, Timestamp paidDate) throws SQLException {
 		String sql = "UPDATE Bill SET bill_paidDate = ? WHERE bill_id = ?";
 
 		try (PreparedStatement statement = connection.prepareStatement(sql)) {
 			statement.setTimestamp(1, paidDate);
+=======
+	public void updateBillPaidDate(String billId, Date paidDate) throws SQLException {
+		String sql = "UPDATE Bill SET bill_paidDate = ? WHERE bill_id = ?";
+
+		try (PreparedStatement statement = connection.prepareStatement(sql)) {
+			statement.setDate(1, paidDate);
+>>>>>>> 582fe9be6fbf99551477911ce8ee6e63ff6ae2cc
 			statement.setString(2, billId);
 			statement.executeUpdate();
 		}
@@ -811,7 +839,11 @@ public class CustomerDAO_Impl {
             statement.setString(1, request.getRequestId());
             statement.setString(2, request.getRequestType());
             statement.setString(3, request.getRequestBy());
+<<<<<<< HEAD
             statement.setTimestamp(4, request.getRequestDate());
+=======
+            statement.setDate(4, request.getRequestDate());
+>>>>>>> 582fe9be6fbf99551477911ce8ee6e63ff6ae2cc
             statement.setString(5, request.getRequestContent());
             statement.setBoolean(6, request.getRequestStatus());
             statement.setString(7, request.getRequestResolvedBy());
@@ -908,7 +940,11 @@ public class CustomerDAO_Impl {
 				t.setFromAccount(rs.getString("transaction_fromAccount"));
 				t.setToAccount(rs.getString("transaction_toAccount"));
 				t.setAmount(Double.parseDouble(rs.getString("displayAmount")));
+<<<<<<< HEAD
 				t.setDate(rs.getTimestamp("transaction_date"));
+=======
+				t.setDate(rs.getDate("transaction_date"));
+>>>>>>> 582fe9be6fbf99551477911ce8ee6e63ff6ae2cc
 				t.setTransactionType(rs.getString("transaction_type"));
 				listTrans.add(t);
 			}
