@@ -2,7 +2,10 @@ package Controller;
 
 import java.io.IOException;
 import java.sql.Date;
+import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -64,14 +67,21 @@ public class InvoiceCreateServlet extends HttpServlet {
 		
 		//Lay ngay` tao bill
 		long currentTimeMillis = System.currentTimeMillis();
-		java.util.Date date = new Date(currentTimeMillis);
-		Date currentDate = new Date(date.getTime());
+
+		Timestamp currentDate = new Timestamp(currentTimeMillis);
 		
 		//Lay ngay` due bill
 		Date dueDate = Date.valueOf(request.getParameter("dueDate"));
 		
+		String[] name = request.getParameterValues("billContent[]");
+		String[] amountString = request.getParameterValues("billAmount[]");
 		
+		double[] amount = Arrays.stream(amountString).mapToDouble(Double::parseDouble).toArray();
+		HashMap<String, Double> billDetails = new HashMap<String, Double>();
 		
+		for (int i = 0; i < name.length; i++) {
+			billDetails.put(name[i], amount[i]);
+		}
 		
 		if (!cusDao.isAccountNumberExists(request.getParameter("billTo"))) {
 			session.setAttribute("generateInvErr", "You cannot create an Invoice to Unknown User!");
@@ -81,11 +91,12 @@ public class InvoiceCreateServlet extends HttpServlet {
 			creatingBill.setBillCreatedBy(currentUser.getCustomerId());
 			creatingBill.setBillAccountReceive(cusDao.getCurrentUserAccount(currentUser).getAccountNumber());
 			creatingBill.setBillAccountPaid(request.getParameter("billTo"));
-			creatingBill.setBillAmount(Double.parseDouble(request.getParameter("billAmount")));
+
 			creatingBill.setBillPaidDate(currentDate);
 			creatingBill.setBillIsPaid(false);
-			creatingBill.setBillContent(request.getParameter("billContent"));
+			
 			creatingBill.setBillDueDate(dueDate);
+			creatingBill.setBillDetails(billDetails);
 			
 			cusDao.addBill(creatingBill);
 			session.setAttribute("successfulGenerateInv", 1);

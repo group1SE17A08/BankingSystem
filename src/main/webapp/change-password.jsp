@@ -79,11 +79,7 @@ input:disabled {
 </style>
 <body style="background-image: linear-gradient(to right, #7F7FD5, #86A8E7, #91EAE4)">
 
-	<nav class="navbar navbar-expand-lg navbar-dark fixed-top">
-		<div class="container-fluid">
-			<a class="navbar-brand" href="index.jsp">VirtualbanK</a>
-		</div>
-	</nav>
+	<%@include file="include/logo.jsp" %>
 	<div class="mainDiv">
 		<div class="cardStyle">
 			<form action="/BankingSystem/change-password" method="post" name="signupForm" id="signupForm">

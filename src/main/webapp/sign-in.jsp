@@ -94,7 +94,7 @@
 <body>
 	<nav class="navbar navbar-expand-lg navbar-dark fixed-top">
         <div class="container-fluid">
-          <a class="navbar-brand" href="#">VirtualbanK</a>
+          <a class="navbar-brand" href="/BankingSystem/homepage">VirtualbanK</a>
           </div>
           </nav>
 	<div class="limiter">

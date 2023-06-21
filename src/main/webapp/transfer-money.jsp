@@ -97,7 +97,7 @@
 								<div class="form-outline form-white mb-4">
 									<input name="smartOtp" type="password" id="smartOtp"
 										class="form-control form-control-lg" /> <label
-										class="form-label" for="smartOtp">Smart OTP</label>
+										class="form-label" for="smartOtp">PIN code</label>
 								</div>
 							</div>
 
