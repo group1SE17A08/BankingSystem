@@ -8,6 +8,19 @@ public class Account {
 	private double accountTotalSavings;
 	private String accountSavingsId;
 	private boolean isAccountLocked;
+	private double accountDefaultBalance;
+	
+	public double getAccountDefaultBalance() {
+		return accountDefaultBalance;
+	}
+
+	public void setAccountDefaultBalance(double accountDefaultBalance) {
+		this.accountDefaultBalance = accountDefaultBalance;
+	}
+
+	public void setAccountTotalSavings(double accountTotalSavings) {
+		this.accountTotalSavings = accountTotalSavings;
+	}
 
 	// Constructors, getters, and setters
 	public Account() {

@@ -1,7 +1,8 @@
 package Entity;
 
 
-import java.sql.Date;
+import java.sql.Timestamp;
+import java.util.HashMap;
 import java.util.Random;
 
 public class Transaction {
@@ -9,10 +10,19 @@ public class Transaction {
 	private String fromAccount;
 	private String toAccount;
 	private double amount;
-	private Date date;
+	private Timestamp date;
 	private boolean status;
 	private String content;
 	private String transactionType;
+	private HashMap<String, Double> billDetails;
+	public HashMap<String, Double> getBillDetails() {
+		return billDetails;
+	}
+
+	public void setBillDetails(HashMap<String, Double> billDetails) {
+		this.billDetails = billDetails;
+	}
+
 	// Default constructor
 	public Transaction() {
 		StringBuilder sb = new StringBuilder();
@@ -38,7 +48,7 @@ public class Transaction {
 	}
 
 	// Constructor with all attributes
-	public Transaction(String transactionId, String fromAccount, String toAccount, double amount, Date date, boolean status,
+	public Transaction(String transactionId, String fromAccount, String toAccount, double amount, Timestamp date, boolean status,
 			String content, String transactionType) {
 		this.transactionId = transactionId;
 		this.fromAccount = fromAccount;
@@ -83,11 +93,11 @@ public class Transaction {
 		this.amount = amount;
 	}
 
-	public Date getDate() {
+	public Timestamp getDate() {
 		return date;
 	}
 
-	public void setDate(Date date) {
+	public void setDate(Timestamp date) {
 		this.date = date;
 	}
 

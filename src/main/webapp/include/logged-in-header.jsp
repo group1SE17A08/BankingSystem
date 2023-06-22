@@ -1,5 +1,9 @@
 <header>
 	<!-- Navbar Section  -->
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+	<script
+		src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 	<nav class="navbar navbar-expand-lg navbar-dark fixed-top">
 		<div class="container-fluid">
 			<a class="navbar-brand" href="/BankingSystem/homepage">VirtualbanK</a>
@@ -10,26 +14,34 @@
 				<span class="navbar-toggler-icon"></span>
 			</button>
 			<div class="collapse navbar-collapse" id="navbarSupportedContent">
-				
+
 				<div class="dropdown" style="margin: 0 5px;">
 					<button class="btn btn-secondary dropdown-toggle" type="button"
 						id="dropdownMenuButton" data-bs-toggle="dropdown"
 						aria-expanded="false">Transaction</button>
 					<ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-						<li><a class="dropdown-item" href="/BankingSystem/transfer-money">Transfer Money</a></li>
-						<li><a class="dropdown-item" href="/BankingSystem/create-invoice">Create an Online Invoice</a></li>
-						<li><a class="dropdown-item" href="/BankingSystem/pay-invoice">Pay an Online Invoice</a></li>
+						<li><a class="dropdown-item"
+							href="/BankingSystem/transfer-money">Transfer Money</a></li>
+						<li><a class="dropdown-item"
+							href="/BankingSystem/create-invoice">Create an Online Invoice</a></li>
+						<li><a class="dropdown-item"
+							href="/BankingSystem/pay-invoice">Pay an Online Invoice</a></li>
 					</ul>
 				</div>
-				
+
 				<div class="dropdown" style="margin: 0 5px;">
 					<button class="btn btn-secondary dropdown-toggle" type="button"
 						id="dropdownMenuButton" data-bs-toggle="dropdown"
 						aria-expanded="false">My Profile</button>
 					<ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-						<li><a class="dropdown-item" href="/BankingSystem/my-profile">View my profile</a></li>
-						<li><a class="dropdown-item" href="#">View
-								my trasaction history</a></li>
+						<li><a class="dropdown-item" href="/BankingSystem/my-profile">View
+								my profile</a></li>
+						<li><a class="dropdown-item"
+							href="/BankingSystem/transaction-history">View my trasaction
+								history</a></li>
+						<li><a class="dropdown-item"
+							href="/BankingSystem/saving">View my savings
+								</a></li>
 					</ul>
 				</div>
 
@@ -38,11 +50,10 @@
 						id="dropdownMenuButton" data-bs-toggle="dropdown"
 						aria-expanded="false">Make a Request</button>
 					<ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-						<li><a class="dropdown-item" href="#">Lock my account</a></li>
-						<li><a class="dropdown-item" href="#">Request
-								a Savings</a></li>
-						<li><a class="dropdown-item" href="#">Request
-								a Personal Information Changing</a></li>
+						<li><a class="dropdown-item" data-bs-toggle="modal"
+							data-bs-target="#myModal" href="#">Lock my account</a></li>
+						<li><a class="dropdown-item" data-bs-toggle="modal"
+							data-bs-target="#myModal2" href="#">Request a Savings</a></li>
 					</ul>
 				</div>
 
@@ -51,9 +62,10 @@
 						id="dropdownMenuButton" data-bs-toggle="dropdown"
 						aria-expanded="false">Settings & Privacy</button>
 					<ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-						<li><a class="dropdown-item" href="#">Change Smart OTP</a></li>
-						<li><a class="dropdown-item" href="/BankingSystem/change-password">Change
-								Password</a></li>
+						<li><a class="dropdown-item" href="/BankingSystem/change-pin">Change
+								PIN</a></li>
+						<li><a class="dropdown-item"
+							href="/BankingSystem/change-password">Change Password</a></li>
 					</ul>
 				</div>
 

@@ -15,7 +15,7 @@
 		<%@include file="include/logged-in-header.jsp"%>
 	</c:if>
 	<!-- Hero Section  -->
-	<div class="mid">
+	<div class="mid" style="z-index: 1">
 		<video autoplay muted loop>
 			<source class="embed-responsive" src="assets/videos/1.mp4"
 				type="video/mp4" />
@@ -29,6 +29,115 @@
 				check deposit. A virtual bank has no branch network.</p>
 			<a class="text-dark" href="#">Get Started</a>
 		</div>
+	</div>
+	<div class="container">
+		<div class="modal fade" id="myModal" role="dialog">
+			<div class="modal-dialog">
+
+				<!-- Modal content-->
+				<div class="modal-content">
+					<div class="modal-header">
+
+						<h4 class="modal-title">Lock your account</h4>
+						<button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+					</div>
+					<form method="post">
+						<div class="modal-body">
+							<div class="form-group">
+								<label for="exampleInputEmail1">Request Content</label> <input
+									type="text" class="form-control" id="exampleInputEmail1"
+									placeholder="Give your reason for the request... "
+									name="reqReason"> <small id="emailHelp"
+									class="form-text text-muted">We'll consider your
+									request as soon as possible. The reply email will be sent after
+									a few days. Please check this mail for further information.</small>
+							</div>
+						</div>
+						<div class="modal-footer">
+							<button type="submit" name="action" value="reqSubmit"
+								class="btn btn-success" data-dismiss="modal">Submit</button>
+						</div>
+					</form>
+				</div>
+
+			</div>
+		</div>
+
+		<div class="modal fade" id="myModal2" role="dialog">
+			<div class="modal-dialog">
+
+				<!-- Modal content-->
+				<div class="modal-content">
+					<div class="modal-header">
+						<h4 class="modal-title">Savings Request</h4>
+						<button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+
+					</div>
+					<form method="post">
+						<div class="modal-body">
+							<div class="form-group">
+
+								<label for="savingAmount">Amount of Savings</label> <input
+									type="number" class="form-control" id="savingAmount"
+									placeholder="Enter amount of money you want to Make a savings... "
+									name="reqAmount"> <label for="maturityDay">Maturity
+									Day</label> <input type="date" class="form-control" id="maturityDay"
+									name="maturityDay"> <small id="emailHelp"
+									class="form-text text-muted">The maturity date is the
+									earliest date that you can withdraw the amount of money you put
+									on your savings, including interest.</small> <br> <br> <small>Please
+									note that: The interest rate is fixed in our bank.</small><br> <small>-
+									7% APY for normal customer.</small><br> <small>- Up to 10%
+									APY for our VIP customer.</small>
+							</div>
+						</div>
+						<div class="modal-footer">
+							<button type="submit" name="action" value="reqSubmit"
+								class="btn btn-success" data-dismiss="modal">Submit</button>
+						</div>
+					</form>
+				</div>
+
+			</div>
+		</div>
+
+		<div class="modal fade" id="myUnlockModal" role="dialog">
+			<div class="modal-dialog">
+
+				<!-- Modal content-->
+				<div class="modal-content">
+					<div class="modal-header">
+						<h4 class="modal-title">Unlock account Request</h4>
+						<button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+
+					</div>
+					<form method="post">
+						<div class="modal-body">
+							<div class="form-group">
+
+								<label for="username">Your Username</label> <input type="text"
+									class="form-control" id="username"
+									name="username"> <label for="email">Enter your
+									email</label> <input type="text" class="form-control" id="email"
+									name="email"> <label for="reason">Reason</label>
+								<input type="text" class="form-control" id="reason"
+									name="reason"> <small id="emailHelp"
+									class="form-text text-muted">Please enter your personal
+									information here. We'll consider your case and reply you as
+									soon as possible.</small> <br> <br> <small>Please note
+									that: The more information you provide in Reason field, the more chance you will get your account unlocked.</small>
+							</div>
+						</div>
+						<div class="modal-footer">
+							<button type="submit" name="action" value="reqSubmit"
+								class="btn btn-success" data-dismiss="modal">Submit</button>
+						</div>
+					</form>
+				</div>
+
+			</div>
+		</div>
+
 	</div>
 	<!-- About Section  -->
 	<section id="about" class="about py-3">
@@ -132,11 +241,54 @@
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
 		integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
 		crossorigin="anonymous"></script>
-
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+	<script
+		src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 	<script>
 		$(document).ready(function() {
 			$('.dropdown-toggle').dropdown();
 		});
+	</script>
+
+	<script>
+		// Get the input element
+		const dateInput = document.getElementById('maturityDay');
+
+		// Add an event listener for input changes
+		dateInput.addEventListener('input', function() {
+			// Get the entered date value
+			const enteredDate = new Date(this.value);
+
+			// Get the current date
+			const currentDate = new Date();
+
+			// Compare the entered date with the current date
+			if (enteredDate < currentDate) {
+				// Reset the input value to an empty string
+				this.value = '';
+
+				// Display an error message or perform any other validation feedback
+				alert('Invalid date. Please enter a date in the future.');
+			}
+		});
+	</script>
+
+	<%
+	// Retrieve the session attribute
+	String itemValue = (String) session.getAttribute("successReq");
+	session.removeAttribute("successReq");
+	%>
+
+	<script>
+  // Access the session attribute value in JavaScript
+  	var item = '<%=itemValue%>
+		';
+
+		// Use the item in JavaScript code
+		if (item !== null && item !== "null") {
+			alert(item);
+		}
 	</script>
 </body>
 </html>
