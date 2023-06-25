@@ -1,6 +1,8 @@
 package Entity;
 
 import java.sql.Date;
+import java.sql.Timestamp;
+import java.util.HashMap;
 import java.util.Random;
 
 public class Bill {
@@ -8,12 +10,22 @@ public class Bill {
 	private String billCreatedBy;
 	private String billAccountReceive;
 	private String billAccountPaid;
-	private double billAmount;
-	private Date billPaidDate;
-	private boolean billIsPaid;
-	private String billContent;
-	private Date billDueDate;
 
+	private Timestamp billPaidDate;
+	private boolean billIsPaid;
+
+	private Date billDueDate;
+	
+	private HashMap<String, Double> billDetails;
+	private double billAmount;
+	
+	public void setBillAmount(double amount) {
+		this.billAmount = amount;
+	}
+	
+	public double getBillAmount() {
+		return this.billAmount;
+	}
 	// Default constructor
 	public Bill() {
 		String CHARACTERS = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
@@ -31,16 +43,18 @@ public class Bill {
 
 	// Parameterized constructor
 	public Bill(String billId, String billCreatedBy, String billAccountReceive, String billAccountPaid,
-			double billAmount, Date billPaidDate, boolean billIsPaid, String billContent, Date billDueDate) {
+			double billAmount, Timestamp billPaidDate, boolean billIsPaid, String billContent, Date billDueDate) {
 		this.billId = billId;
 		this.billCreatedBy = billCreatedBy;
 		this.billAccountReceive = billAccountReceive;
 		this.billAccountPaid = billAccountPaid;
-		this.billAmount = billAmount;
+
 		this.billPaidDate = billPaidDate;
 		this.billIsPaid = billIsPaid;
-		this.billContent = billContent;
+
 		this.billDueDate = billDueDate;
+		
+		
 	}
 
 	// Getter and setter methods
@@ -76,20 +90,14 @@ public class Bill {
 		this.billAccountPaid = billAccountPaid;
 	}
 
-	public double getBillAmount() {
-		return billAmount;
-	}
 
-	public void setBillAmount(double billAmount) {
-		this.billAmount = billAmount;
-	}
 
-	public Date getBillPaidDate() {
+	public Timestamp getBillPaidDate() {
 		return billPaidDate;
 	}
 
-	public void setBillPaidDate(Date billPaidDate) {
-		this.billPaidDate = billPaidDate;
+	public void setBillPaidDate(Timestamp billPaidTimestamp) {
+		this.billPaidDate = billPaidTimestamp;
 	}
 
 	public boolean isBillIsPaid() {
@@ -100,28 +108,23 @@ public class Bill {
 		this.billIsPaid = billIsPaid;
 	}
 
-	public String getBillContent() {
-		return billContent;
-	}
 
-	public void setBillContent(String billContent) {
-		this.billContent = billContent;
-	}
 
 	public Date getBillDueDate() {
 		return billDueDate;
 	}
 
-	public void setBillDueDate(Date billDueDate) {
-		this.billDueDate = billDueDate;
+	public void setBillDueDate(Date billDueTimestamp) {
+		this.billDueDate = billDueTimestamp;
 	}
 
-	// toString method
-	@Override
-	public String toString() {
-		return "Bill{" + "billId='" + billId + '\'' + ", billCreatedBy='" + billCreatedBy + '\''
-				+ ", billAccountReceive='" + billAccountReceive + '\'' + ", billAccountPaid='" + billAccountPaid + '\''
-				+ ", billAmount=" + billAmount + ", billPaidDate=" + billPaidDate + ", billIsPaid=" + billIsPaid
-				+ ", billContent='" + billContent + '\'' + ", billDueDate=" + billDueDate + '}';
+	public HashMap<String, Double> getBillDetails() {
+		return billDetails;
 	}
+
+	public void setBillDetails(HashMap<String, Double> billDetails) {
+		this.billDetails = billDetails;
+	}
+
+	
 }
