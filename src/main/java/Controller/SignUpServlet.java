@@ -1,6 +1,7 @@
 package Controller;
 
 import java.io.IOException;
+import java.sql.Date;
 import java.time.LocalDate;
 
 import javax.servlet.ServletException;
@@ -40,8 +41,9 @@ public class SignUpServlet extends HttpServlet {
 		String name = request.getParameter("name");
 		String address = request.getParameter("address");
 		String phoneNumber = request.getParameter("phoneNumber");
-		String dob = request.getParameter("dateOfBirth");
-
+		String dobAsString = request.getParameter("dateOfBirth");
+		Date dob = Date.valueOf(dobAsString);
+		
 		String username = request.getParameter("username");
 		String password = request.getParameter("pass");
 		String cfmPassword = request.getParameter("confirm_pass");
@@ -124,7 +126,7 @@ public class SignUpServlet extends HttpServlet {
 			customer.setCustomerName(name);
 			customer.setCustomerAddress(address);
 			customer.setCustomerPhoneNumber(phoneNumber);
-			customer.setCustomerDob(LocalDate.parse(dob));
+			customer.setCustomerDob(dob);
 			customer.setCustomerEmail(email);
 			customer.setCustomerUsername(username);
 			customer.setCustomerPassword(cfmPassword);

@@ -1,8 +1,8 @@
 package Controller;
 
 import java.io.IOException;
-import java.sql.Date;
 import java.sql.SQLException;
+import java.sql.Timestamp;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -52,9 +52,11 @@ public class TransferMoneyServlet extends HttpServlet {
 		System.out.println("customer session is: " + session.getAttribute("user"));
 		CustomerDAO_Impl cusDao = new CustomerDAO_Impl();
 		Transaction t = new Transaction();
+		
 		long currentTimeMillis = System.currentTimeMillis();
-		java.util.Date date = new Date(currentTimeMillis);
-		Date currentDate = new Date(date.getTime());
+
+		Timestamp currentDate = new Timestamp(currentTimeMillis);
+		
 		Account currentAcc = cusDao.getCurrentUserAccount(customer);
 		
 		

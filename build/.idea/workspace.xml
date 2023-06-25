@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="22473f5a-232d-49b8-972d-8df40b9396bc" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/classes/AdminController/AdminLoginServlet.class" beforeDir="false" afterPath="$PROJECT_DIR$/classes/AdminController/AdminLoginServlet.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/Controller/HomepageServlet.class" beforeDir="false" afterPath="$PROJECT_DIR$/classes/Controller/HomepageServlet.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/Controller/MyProfileServlet.class" beforeDir="false" afterPath="$PROJECT_DIR$/classes/Controller/MyProfileServlet.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/Controller/SignUpServlet.class" beforeDir="false" afterPath="$PROJECT_DIR$/classes/Controller/SignUpServlet.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/Controller/TransferMoneyServlet.class" beforeDir="false" afterPath="$PROJECT_DIR$/classes/Controller/TransferMoneyServlet.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/DAO/CustomerDAO_Impl.class" beforeDir="false" afterPath="$PROJECT_DIR$/classes/DAO/CustomerDAO_Impl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/DAO/StaffDAO_Impl.class" beforeDir="false" afterPath="$PROJECT_DIR$/classes/DAO/StaffDAO_Impl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/Entity/Account.class" beforeDir="false" afterPath="$PROJECT_DIR$/classes/Entity/Account.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/Entity/Customer.class" beforeDir="false" afterPath="$PROJECT_DIR$/classes/Entity/Customer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/Entity/Transaction.class" beforeDir="false" afterPath="$PROJECT_DIR$/classes/Entity/Transaction.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../new_diagram.uxf" beforeDir="false" afterPath="$PROJECT_DIR$/../new_diagram.uxf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/java/AdminController/AdminLoginServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/../src/main/java/AdminController/AdminLoginServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/java/Controller/HomepageServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/../src/main/java/Controller/HomepageServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/java/Controller/InvoiceCreateServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/../src/main/java/Controller/InvoiceCreateServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/java/Controller/MyProfileServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/../src/main/java/Controller/MyProfileServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/java/Controller/SignUpServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/../src/main/java/Controller/SignUpServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/java/Controller/TransferMoneyServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/../src/main/java/Controller/TransferMoneyServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/java/Controller/ViewInvoiceServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/../src/main/java/Controller/ViewInvoiceServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/java/DAO/ConfirmPaymentServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/../src/main/java/DAO/ConfirmPaymentServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/java/DAO/CustomerDAO_Impl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../src/main/java/DAO/CustomerDAO_Impl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/java/DAO/StaffDAO_Impl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../src/main/java/DAO/StaffDAO_Impl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/java/Entity/Account.java" beforeDir="false" afterPath="$PROJECT_DIR$/../src/main/java/Entity/Account.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/java/Entity/Bill.java" beforeDir="false" afterPath="$PROJECT_DIR$/../src/main/java/Entity/Bill.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/java/Entity/Customer.java" beforeDir="false" afterPath="$PROJECT_DIR$/../src/main/java/Entity/Customer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/java/Entity/Transaction.java" beforeDir="false" afterPath="$PROJECT_DIR$/../src/main/java/Entity/Transaction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/webapp/change-password.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/../src/main/webapp/change-password.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/webapp/create-bill.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/../src/main/webapp/create-bill.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/webapp/css/admin.css" beforeDir="false" afterPath="$PROJECT_DIR$/../src/main/webapp/css/admin.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/webapp/include/logged-in-header.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/../src/main/webapp/include/logged-in-header.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/webapp/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/../src/main/webapp/index.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/webapp/my-profile.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/../src/main/webapp/my-profile.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/webapp/sign-in.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/../src/main/webapp/sign-in.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/webapp/sign-up.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/../src/main/webapp/sign-up.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/webapp/transfer-money.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/../src/main/webapp/transfer-money.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/webapp/view-invoice.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/../src/main/webapp/view-invoice.jsp" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="ProjectId" id="2RVtFgerGFixesEX0gLMXM3HKpc" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+    <option name="showMembers" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "master",
+    "last_opened_file_path": "D:/Study/SWP/BankingSystem"
+  }
+}]]></component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="22473f5a-232d-49b8-972d-8df40b9396bc" name="Changes" comment="" />
+      <created>1687346973565</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1687346973565</updated>
+    </task>
+    <servers />
+  </component>
+</project>

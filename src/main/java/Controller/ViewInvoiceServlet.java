@@ -1,6 +1,7 @@
 package Controller;
 
 import java.io.IOException;
+import java.util.Map.Entry;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -25,6 +26,14 @@ public class ViewInvoiceServlet extends HttpServlet {
 		CustomerDAO_Impl cusDao = new CustomerDAO_Impl();
 		Bill currentBill = cusDao.getBillById(request.getParameter("billId"));
 		
+		double totalAmount = 0;
+		for (Entry<String, Double> entry : currentBill.getBillDetails().entrySet()) {
+		    String key = entry.getKey();
+		    Double value = entry.getValue();
+		    totalAmount += value;
+		}
+		
+		currentBill.setBillAmount(totalAmount);
 		Customer billTo = cusDao.getCustomerByBankAccount(currentBill.getBillAccountPaid());
 		Customer billFrom = cusDao.getCustomerByBankAccount(currentBill.getBillAccountReceive());
 		//Neu khong phai bill cua minh` tao ra -> hien nut Pay Now
@@ -42,9 +51,5 @@ public class ViewInvoiceServlet extends HttpServlet {
 			throws ServletException, IOException {
 		doGet(request, response);
 	}
-	
-	protected void doPost_payNow(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		doGet(request, response);
-	}
+
 }
