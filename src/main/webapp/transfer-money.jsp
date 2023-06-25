@@ -29,6 +29,7 @@
 	style="background-image: linear-gradient(to right, #fc5c7d, #6a82fb); min-height: 100vh; display: flex; flex-direction: column">
 	<%@include file="include/logo.jsp"%>
 	<div class="container-fluid">
+
 		<div class="row">
 			<div class="col-4">
 				<div class="card"
@@ -96,7 +97,7 @@
 								<div class="form-outline form-white mb-4">
 									<input name="smartOtp" type="password" id="smartOtp"
 										class="form-control form-control-lg" /> <label
-										class="form-label" for="smartOtp">Smart OTP</label>
+										class="form-label" for="smartOtp">PIN code</label>
 								</div>
 							</div>
 

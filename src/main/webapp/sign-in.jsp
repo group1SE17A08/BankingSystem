@@ -1,4 +1,4 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
@@ -93,20 +93,21 @@
 </head>
 <body>
 	<nav class="navbar navbar-expand-lg navbar-dark fixed-top">
-        <div class="container-fluid">
-          <a class="navbar-brand" href="#">VirtualbanK</a>
-          </div>
-          </nav>
+		<div class="container-fluid">
+			<a class="navbar-brand" href="/BankingSystem/homepage">VirtualbanK</a>
+		</div>
+	</nav>
 	<div class="limiter">
 		<div class="container-login100">
 			<div class="wrap-login100">
 				<div class="login100-pic js-tilt" data-tilt>
 					<img src="images/img-01.png" alt="IMG">
 				</div>
-				<form action="/BankingSystem/sign-in" class="login100-form validate-form" method="post">
-					<span class="login100-form-title"> Member Login </span>
-					<span style="color: red">${sessionScope.loginFail }</span>
-					<span style="color: red">${sessionScope.successSignUp }</span>
+				<form action="/BankingSystem/sign-in"
+					class="login100-form validate-form" method="post">
+					<span class="login100-form-title"> Member Login </span> <span
+						style="color: red">${sessionScope.loginFail }</span> <span
+						style="color: red">${sessionScope.successSignUp }</span>
 					<div class="wrap-input100 validate-input"
 						data-validate="Please enter your username">
 						<input class="input100" type="text" name="username"
@@ -127,19 +128,21 @@
 						<button class="login100-form-btn" name="action" value="login">Login</button>
 					</div>
 					<div class="text-center p-t-12">
-						<span class="txt1"> Forgot </span> <a class="txt2" href="forget-pass.jsp">
-							Password? </a>
+						<span class="txt1"> Forgot </span> <a class="txt2"
+							href="/BankingSystem/reset_password"> Password? </a>
 					</div>
+
 					<div class="text-center p-t-136">
-						<a class="txt2" href="sign-up.jsp"> Create your Account <i
-							class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
+						<a class="txt2" href="/BankingSystem/sign-up"> Create your
+							Account <i class="fa fa-long-arrow-right m-l-5"
+							aria-hidden="true"></i>
 						</a>
 					</div>
 				</form>
 			</div>
 		</div>
 	</div>
-	<%@include file="include/footer.jsp" %>
+	<%@include file="include/footer.jsp"%>
 	<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
 
 	<script src="vendor/bootstrap/js/popper.js"></script>

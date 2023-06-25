@@ -1,7 +1,8 @@
 package Entity;
 
 
-import java.sql.Date;
+import java.sql.Timestamp;
+import java.util.HashMap;
 import java.util.Random;
 
 public class Transaction {
@@ -9,32 +10,21 @@ public class Transaction {
 	private String fromAccount;
 	private String toAccount;
 	private double amount;
-	private Date date;
+	private Timestamp date;
 	private boolean status;
 	private String content;
+	private String transactionType;
+	private HashMap<String, Double> billDetails;
+	public HashMap<String, Double> getBillDetails() {
+		return billDetails;
+	}
+
+	public void setBillDetails(HashMap<String, Double> billDetails) {
+		this.billDetails = billDetails;
+	}
 
 	// Default constructor
 	public Transaction() {
-	}
-
-	// Constructor with all attributes
-	public Transaction(String transactionId, String fromAccount, String toAccount, double amount, Date date, boolean status,
-			String content) {
-		this.transactionId = transactionId;
-		this.fromAccount = fromAccount;
-		this.toAccount = toAccount;
-		this.amount = amount;
-		this.date = date;
-		this.status = status;
-		this.content = content;
-	}
-
-	// Getter and Setter methods for all attributes
-	public String getTransactionId() {
-		return transactionId;
-	}
-
-	public void setTransactionId() {
 		StringBuilder sb = new StringBuilder();
 
         String characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
@@ -47,6 +37,36 @@ public class Transaction {
             sb.append(randomChar);
         }
         this.transactionId = sb.toString();
+	}
+
+	public String getTransactionType() {
+		return transactionType;
+	}
+
+	public void setTransactionType(String transactionType) {
+		this.transactionType = transactionType;
+	}
+
+	// Constructor with all attributes
+	public Transaction(String transactionId, String fromAccount, String toAccount, double amount, Timestamp date, boolean status,
+			String content, String transactionType) {
+		this.transactionId = transactionId;
+		this.fromAccount = fromAccount;
+		this.toAccount = toAccount;
+		this.amount = amount;
+		this.date = date;
+		this.status = status;
+		this.content = content;
+		this.transactionType = transactionType;
+	}
+
+	// Getter and Setter methods for all attributes
+	public String getTransactionId() {
+		return transactionId;
+	}
+
+	public void setTransactionId(String transactionId) {
+		this.transactionId = transactionId;
 	}
 
 	public String getFromAccount() {
@@ -73,11 +93,11 @@ public class Transaction {
 		this.amount = amount;
 	}
 
-	public Date getDate() {
+	public Timestamp getDate() {
 		return date;
 	}
 
-	public void setDate(Date date) {
+	public void setDate(Timestamp date) {
 		this.date = date;
 	}
 

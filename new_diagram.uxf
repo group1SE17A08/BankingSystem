@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="15.1.0">
+  <zoom_level>8</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>104</x>
+      <y>216</y>
+      <w>432</w>
+      <h>128</h>
+    </coordinates>
+    <panel_attributes>Controller::HomepageServlet
+--
+-serialVersionUID = 1L: long
+--
++HomepageServlet(): ctor
+#doGet(HttpServletRequest request, HttpServletResponse response): void
+#doPost(HttpServletRequest request, HttpServletResponse response): void
+#doPost_signIn(HttpServletRequest request, HttpServletResponse response): void
+#doPost_logOut(HttpServletRequest request, HttpServletResponse response): void
+#doPost_takeReq(HttpServletRequest request, HttpServletResponse response): void
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>288</x>
+      <y>160</y>
+      <w>352</w>
+      <h>256</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>20.0;70.0;20.0;10.0;420.0;10.0;420.0;300.0;10.0;300.0;10.0;230.0</additional_attributes>
+  </element>
+  <element>
+    <id>Text</id>
+    <coordinates>
+      <x>344</x>
+      <y>400</y>
+      <w>248</w>
+      <h>64</h>
+    </coordinates>
+    <panel_attributes>Clear the session, set the state to not logged in and redirect the user to homepage. User has to log in again in order to use the Banking Application.
+style=wordwrap</panel_attributes>
+    <additional_attributes/>
+  </element>
+</diagram>

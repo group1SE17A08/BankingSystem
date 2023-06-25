@@ -266,9 +266,9 @@ input.invalid {
 
 					<div class="tab">
 						<div class="wrap-input100 validate-input"
-							data-validate="A 12-digit bank account number is required">
-							<input pattern="^\d{12}$"
-								title="The account number must be 12-digit" class="input100"
+							data-validate="A 16-digit bank account number is required">
+							<input pattern="^\d{16}$"
+								title="The account number must be 16-digit" class="input100"
 								type="text" name="accountNumber"
 								placeholder="Enter the account number you want"> <span
 								class="focus-input100"></span> <span class="symbol-input100">
@@ -276,8 +276,8 @@ input.invalid {
 							</span>
 						</div>
 						<div class="wrap-input100 validate-input"
-							data-validate="6-digit Smart OTP is required">
-							<input pattern="^\d{6}$" title="OTP must be 6-digits"
+							data-validate="6-digit PIN is required">
+							<input pattern="^\d{6}$" title="PIN code must be 6-digits"
 								class="input100" type="password" name="otp"
 								placeholder="Enter your OTP"> <span
 								class="focus-input100"></span> <span class="symbol-input100">
@@ -285,9 +285,9 @@ input.invalid {
 							</span>
 						</div>
 						<div class="wrap-input100 validate-input"
-							data-validate="Re-enter your OTP for confirmation">
+							data-validate="Re-enter your PIN for confirmation">
 							<input class="input100" type="password" name="confirm_otp"
-								placeholder="Smart OTP confirmation"> <span
+								placeholder="Smart PIN confirmation"> <span
 								class="focus-input100"></span> <span class="symbol-input100">
 								<i class="fa fa-lock" aria-hidden="true"></i>
 							</span>
