@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="15.1.0">
+  <zoom_level>8</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>656</x>
+      <y>80</y>
+      <w>416</w>
+      <h>512</h>
+    </coordinates>
+    <panel_attributes>Entity::Customer
+--
+-customerId: String
+-customerName: String
+-customerDob: Date
+-customerAddress: String
+-customerPhoneNumber: String
+-customerEmail: String
+-customerUsername: String
+-customerPassword: String
+-customerBankAccount: String
+-loginAttempts: int
+-vipStatus: boolean
+--
++Customer(): ctor
++Customer(String customerId, String customerName, Date customerDob, String customerAddress, String customerPhoneNumber, String customerEmail, String customerUsername, String customerPassword, String customerBankAccount, int loginAttempts): ctor
++getLoginAttempts(): int
++setLoginAttempts(int loginAttempts): void
++getCustomerId(): String
++setCustomerId(String customerId): void
++getCustomerName(): String
++setCustomerName(String customerName): void
++getCustomerDob(): Date
++setCustomerDob(Date customerDob): void
++getCustomerAddress(): String
++setCustomerAddress(String customerAddress): void
++getCustomerPhoneNumber(): String
++setCustomerPhoneNumber(String customerPhoneNumber): void
++getCustomerEmail(): String
++setCustomerEmail(String customerEmail): void
++getCustomerUsername(): String
++setCustomerUsername(String customerUsername): void
++getCustomerPassword(): String
++setCustomerPassword(String customerPassword): void
++getCustomerBankAccount(): String
++setCustomerBankAccount(String customerBankAccount): void
++toString(): String
++isVipStatus(): boolean
++setVipStatus(boolean vipStatus): void
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>40</x>
+      <y>80</y>
+      <w>424</w>
+      <h>160</h>
+    </coordinates>
+    <panel_attributes>Controller::HomepageServlet
+--
+-serialVersionUID = 1L: long
+--
++HomepageServlet(): ctor
+#doGet(HttpServletRequest request, HttpServletResponse response): void
+#doPost(HttpServletRequest request, HttpServletResponse response): void
+#doPost_signIn(HttpServletRequest request, HttpServletResponse response): void
+#doPost_logOut(HttpServletRequest request, HttpServletResponse response): void
+#doPost_takeReq(HttpServletRequest request, HttpServletResponse response): void
+#doPost_takeUnlockReq(HttpServletRequest request, HttpServletResponse response): void
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>40</x>
+      <y>464</y>
+      <w>424</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>Controller::MyProfileServlet
+--
+-serialVersionUID = 1L: long
+--
++MyProfileServlet(): ctor
+#doGet(HttpServletRequest request, HttpServletResponse response): void
+#doPost(HttpServletRequest request, HttpServletResponse response): void
+#doPost_requestChange(HttpServletRequest request, HttpServletResponse response): void
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>40</x>
+      <y>288</y>
+      <w>424</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>Controller::SignInServlet
+--
+-serialVersionUID = 1L: long
+--
++SignInServlet(): ctor
+#doGet(HttpServletRequest request, HttpServletResponse response): void
+#doPost(HttpServletRequest request, HttpServletResponse response): void
+#doPost_signIn(HttpServletRequest request, HttpServletResponse response): void
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>232</x>
+      <y>232</y>
+      <w>24</w>
+      <h>72</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>10.0;70.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>232</x>
+      <y>400</y>
+      <w>24</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>10.0;80.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>456</x>
+      <y>352</y>
+      <w>216</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>250.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>456</x>
+      <y>512</y>
+      <w>216</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;250.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Text</id>
+    <coordinates>
+      <x>488</x>
+      <y>312</y>
+      <w>144</w>
+      <h>56</h>
+    </coordinates>
+    <panel_attributes>When user logged in, all information of user is stored in Session
+style=wordwrap</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Text</id>
+    <coordinates>
+      <x>488</x>
+      <y>456</y>
+      <w>144</w>
+      <h>56</h>
+    </coordinates>
+    <panel_attributes>Retrieved User Instance will be used to display information in MyProfileServlet
+style=wordwrap</panel_attributes>
+    <additional_attributes/>
+  </element>
+</diagram>
